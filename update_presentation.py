@@ -17,11 +17,11 @@ ws = wb['Detalles movimientos']
 transactions = []
 rows = list(ws.iter_rows(values_only=True))
 
-compras_l = 34579.0
+compras_l = 0.0
+monto_compras = 0.0
 ventas_l = 0.0
-extracciones_l = 16564.0
-monto_compras = 11555960.0
 monto_ventas = 0.0
+extracciones_l = 0.0
 comisiones = 0.0
 
 for row in rows[4:]:
@@ -44,11 +44,16 @@ for row in rows[4:]:
     comision = float(row[11]) if len(row) > 11 and isinstance(row[11], (int, float)) else 0
     observacion = str(row[12]) if len(row) > 12 and row[12] not in (None, 0) else ''
     detalles = str(row[13]) if len(row) > 13 and row[13] not in (None, 0) else ''
-    
-    if 'ENAP' in cliente or 'ENAP' in vendedor:
-        pass
+
+    compra_monto = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0
+    compra_litros = float(row[15]) if len(row) > 15 and isinstance(row[15], (int, float)) else 0
+
+    if 'ENAP' in cliente or 'ENAP' in vendedor or compra_litros > 0:
+        compras_l += compra_litros
+        monto_compras += compra_monto
     elif 'Ignacio' in vendedor or 'Ignacio' in cliente:
-        pass
+        extraccion_val = litros if litros > 0 else (total if total > 0 else 0)
+        extracciones_l += extraccion_val
     else:
         ventas_l += litros
         monto_ventas += total
@@ -122,8 +127,9 @@ if os.path.exists('index.html'):
     with open('dist/index.html', 'w', encoding='utf-8') as f:
         f.write(updated_html)
 
-print(f"✓ KPIs recalculados dinámicamente: {ventas_l:.1f} Litros vendidos por ${monto_ventas:,.0f} CLP")
-print(f"✓ Transacciones procesadas: {len(transactions)}")
+print(f"✓ ENAP Compras recalculadas: {compras_l:,.1f} Litros por ${monto_compras:,.0f} CLP")
+print(f"✓ Ventas recalculadas: {ventas_l:,.1f} Litros por ${monto_ventas:,.0f} CLP")
+print(f"✓ Stock Saldo actual: {stock_saldo:,.1f} Litros")
 
 # Automatic Git Push to GitHub
 try:
@@ -136,10 +142,10 @@ try:
         
         subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
         subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", f"Calculated KPI update {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
+        subprocess.run(["git", "commit", "-m", f"ENAP Purchases dynamic recalculation {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
         subprocess.run(["git", "push", "origin", "main"], check=True)
         print("==================================================")
-        print("🚀 ¡NUEVOS DATOS Y MÉTRICAS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
+        print("🚀 ¡NUEVOS DATOS DE ENAP Y COMPRAS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
         print("==================================================")
     else:
         print("ℹ️ Archivo .github_token no encontrado.")
