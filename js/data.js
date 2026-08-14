@@ -1,18 +1,18 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-14 14:06:44)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-14 14:09:28)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 34579.0,
-        ventasLitros: 6479.8,
+        ventasLitros: 6735.8,
         stockSaldoLitros: 28099.2,
         extraccionesLitros: 16564.0,
         montoCompras: 11555960,
-        montoVentas: 5741100,
+        montoVentas: 0.0,
         comisionesPagadas: 485760,
         comisionesPendientes: 536000,
         totalComisiones: 1021760,
         costoPromedioLitro: 334.19,
-        precioPromedioVentaLitro: 886.00,
-        margenPromedioLitro: 551.81,
+        precioPromedioVentaLitro: 0.00,
+        margenPromedioLitro: -334.19,
         porcentajeMargenBruto: 62.3
     },
     transacciones: [

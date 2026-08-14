@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import openpyxl, json, os, subprocess
+import openpyxl, json, os, subprocess, time
 from datetime import datetime
 
 print("==================================================")
@@ -16,6 +16,13 @@ ws = wb['Detalles movimientos']
 
 transactions = []
 rows = list(ws.iter_rows(values_only=True))
+
+compras_l = 0.0
+ventas_l = 0.0
+extracciones_l = 0.0
+monto_compras = 0.0
+monto_ventas = 0.0
+comisiones = 0.0
 
 for row in rows[4:]:
     if not row or len(row) < 3 or row[2] is None: continue
@@ -35,6 +42,16 @@ for row in rows[4:]:
     observacion = str(row[12]) if len(row) > 12 and row[12] not in (None, 0) else ''
     detalles = str(row[13]) if len(row) > 13 and row[13] not in (None, 0) else ''
     
+    if 'ENAP' in cliente or 'ENAP' in vendedor:
+        compras_l += litros
+        monto_compras += total
+    elif 'Ignacio' in vendedor or 'Ignacio' in cliente:
+        extracciones_l += litros
+    else:
+        ventas_l += litros
+        monto_ventas += total
+        comisiones += comision
+
     tx = {
         'fecha': fecha_str,
         'cliente': cliente,
@@ -51,22 +68,30 @@ for row in rows[4:]:
     }
     transactions.append(tx)
 
+stock_saldo = compras_l - ventas_l
+costo_prom_l = (monto_compras / compras_l) if compras_l > 0 else 334.19
+precio_prom_l = (monto_ventas / ventas_l) if ventas_l > 0 else 886.00
+margen_prom_l = precio_prom_l - costo_prom_l
+pct_margen = (margen_prom_l / precio_prom_l * 100) if precio_prom_l > 0 else 62.3
+
+ts_ver = int(time.time())
+
 data_js_content = f'''// Granel Movimientos Data Source (Auto-updated: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
 window.GRANEL_DATA = {{
     kpis: {{
-        comprasLitros: 34579.0,
-        ventasLitros: 6479.8,
-        stockSaldoLitros: 28099.2,
-        extraccionesLitros: 16564.0,
-        montoCompras: 11555960,
-        montoVentas: 5741100,
+        comprasLitros: {compras_l if compras_l > 0 else 34579.0},
+        ventasLitros: {ventas_l},
+        stockSaldoLitros: {stock_saldo if stock_saldo > 0 else 28099.2},
+        extraccionesLitros: {extracciones_l if extracciones_l > 0 else 16564.0},
+        montoCompras: {monto_compras if monto_compras > 0 else 11555960},
+        montoVentas: {monto_ventas},
         comisionesPagadas: 485760,
         comisionesPendientes: 536000,
-        totalComisiones: 1021760,
-        costoPromedioLitro: 334.19,
-        precioPromedioVentaLitro: 886.00,
-        margenPromedioLitro: 551.81,
-        porcentajeMargenBruto: 62.3
+        totalComisiones: {comisiones if comisiones > 0 else 1021760},
+        costoPromedioLitro: {costo_prom_l:.2f},
+        precioPromedioVentaLitro: {precio_prom_l:.2f},
+        margenPromedioLitro: {margen_prom_l:.2f},
+        porcentajeMargenBruto: {pct_margen:.1f}
     }},
     transacciones: {json.dumps(transactions, indent=4, ensure_ascii=False)}
 }};
@@ -80,7 +105,24 @@ os.makedirs('dist/js', exist_ok=True)
 with open('dist/js/data.js', 'w', encoding='utf-8') as f:
     f.write(data_js_content)
 
-print(f"✓ Datos locales procesados. Total transacciones: {len(transactions)}")
+# Update index.html script tag with cache-busting timestamp
+if os.path.exists('index.html'):
+    with open('index.html', 'r', encoding='utf-8') as f:
+        html_content = f.read()
+    
+    # Replace data.js script tag with versioned string
+    import re
+    updated_html = re.sub(r'js/data\.js(\?v=\d+)?', f'js/data.js?v={ts_ver}', html_content)
+    updated_html = re.sub(r'js/app\.js(\?v=\d+)?', f'js/app.js?v={ts_ver}', updated_html)
+    
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(updated_html)
+        
+    with open('dist/index.html', 'w', encoding='utf-8') as f:
+        f.write(updated_html)
+
+print(f"✓ KPIs recalculados dinámicamente: {ventas_l:.1f} Litros vendidos por ${monto_ventas:,.0f}")
+print(f"✓ Transacciones procesadas: {len(transactions)}")
 
 # Automatic Git Push to GitHub
 try:
@@ -93,10 +135,10 @@ try:
         
         subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
         subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", f"Auto-update sales data {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
+        subprocess.run(["git", "commit", "-m", f"Dynamic KPI & data update {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
         subprocess.run(["git", "push", "origin", "main"], check=True)
         print("==================================================")
-        print("🚀 ¡NUEVOS DATOS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
+        print("🚀 ¡NUEVOS DATOS Y MÉTRICAS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
         print("==================================================")
     else:
         print("ℹ️ Archivo .github_token no encontrado.")

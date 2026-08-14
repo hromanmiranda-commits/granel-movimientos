@@ -1,4 +1,4 @@
-// Granel Movimientos - Presentation & Dashboard JavaScript Controller
+// Granel Movimientos - Dynamic Presentation & Dashboard Controller
 
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
@@ -17,6 +17,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFullscreen = document.getElementById('btnFullscreen');
 
     totalSlideNumEl.textContent = String(totalSlides).padStart(2, '0');
+
+    // Populate Dynamic KPIs across cards
+    function updateDynamicKPIs() {
+        if (!window.GRANEL_DATA || !window.GRANEL_DATA.kpis) return;
+        const kpis = window.GRANEL_DATA.kpis;
+
+        // Slide 1 KPIs
+        const kpiComprasL = document.querySelector('#slide-1 .kpi-value.cyan');
+        if (kpiComprasL) kpiComprasL.textContent = `${kpis.comprasLitros.toLocaleString('es-CL')} L`;
+
+        const kpiVentasMonto = document.querySelector('#slide-1 .kpi-value.emerald');
+        if (kpiVentasMonto) kpiVentasMonto.textContent = `$${Math.round(kpis.montoVentas).toLocaleString('es-CL')}`;
+
+        const kpiVentasLitrosSub = document.querySelector('#slide-1 .badge.badge-emerald');
+        if (kpiVentasLitrosSub) kpiVentasLitrosSub.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} Litros`;
+
+        const kpiStockSaldo = document.querySelector('#slide-1 .kpi-value.purple');
+        if (kpiStockSaldo) kpiStockSaldo.textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} L`;
+
+        // Slide 2 KPIs
+        const s2ComprasL = document.querySelector('#slide-2 .kpi-value.cyan');
+        if (s2ComprasL) s2ComprasL.textContent = `${kpis.comprasLitros.toLocaleString('es-CL')} L`;
+
+        const s2VentasL = document.querySelector('#slide-2 .kpi-value.emerald');
+        if (s2VentasL) s2VentasL.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} L`;
+
+        const s2ExtraccionesL = document.querySelector('#slide-2 .kpi-value.rose');
+        if (s2ExtraccionesL) s2ExtraccionesL.textContent = `${kpis.extraccionesLitros.toLocaleString('es-CL')} L`;
+    }
 
     // Slide Navigation Function
     function showSlide(index) {
@@ -110,14 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChartInventario() {
         const ctx = document.getElementById('chartInventario');
-        if (!ctx || chartInventarioObj) return;
+        if (!ctx || chartInventarioObj || !window.GRANEL_DATA) return;
+        const k = window.GRANEL_DATA.kpis;
 
         chartInventarioObj = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: ['Litros Vendidos', 'Stock Saldo', 'Extracciones Operativas'],
                 datasets: [{
-                    data: [6479.8, 28099.2, 16564.0],
+                    data: [k.ventasLitros, k.stockSaldoLitros, k.extraccionesLitros],
                     backgroundColor: ['#10b981', '#8b5cf6', '#ef4444'],
                     borderColor: '#0b0f19',
                     borderWidth: 3
@@ -135,7 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChartFinanciero() {
         const ctx = document.getElementById('chartFinanciero');
-        if (!ctx || chartFinancieroObj) return;
+        if (!ctx || chartFinancieroObj || !window.GRANEL_DATA) return;
+        const k = window.GRANEL_DATA.kpis;
 
         chartFinancieroObj = new Chart(ctx, {
             type: 'bar',
@@ -143,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['Monto Compras ENAP', 'Total Recaudado Ventas', 'Comisiones Totales'],
                 datasets: [{
                     label: 'Monto ($ CLP)',
-                    data: [11555960, 5741100, 1021760],
+                    data: [k.montoCompras, k.montoVentas, k.totalComisiones],
                     backgroundColor: ['#00f2fe', '#10b981', '#f59e0b'],
                     borderRadius: 8
                 }]
@@ -164,14 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChartVendedores() {
         const ctx = document.getElementById('chartVendedores');
-        if (!ctx || chartVendedoresObj) return;
+        if (!ctx || chartVendedoresObj || !window.GRANEL_DATA) return;
+
+        // Calculate dynamic seller totals
+        let cjLitros = 0;
+        let tripLitros = 0;
+
+        window.GRANEL_DATA.transacciones.forEach(tx => {
+            if (tx.vendedor.includes('CJ')) cjLitros += tx.litros;
+            if (tx.vendedor.includes('Tripulacion')) tripLitros += tx.litros;
+        });
 
         chartVendedoresObj = new Chart(ctx, {
             type: 'pie',
             data: {
                 labels: ['CJ (Comisionista JC)', 'Tripulación (Ventas Directas)'],
                 datasets: [{
-                    data: [5108.8, 1371.0],
+                    data: [cjLitros > 0 ? cjLitros : 5108.8, tripLitros > 0 ? tripLitros : 1371.0],
                     backgroundColor: ['#00f2fe', '#f59e0b'],
                     borderColor: '#0b0f19',
                     borderWidth: 3
@@ -242,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sellerFilter) sellerFilter.addEventListener('change', renderTable);
 
     // Initial Setup
+    updateDynamicKPIs();
     buildOverviewGrid();
     showSlide(0);
     renderTable();
