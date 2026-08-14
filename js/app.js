@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDynamicKPIs() {
         if (!window.GRANEL_DATA || !window.GRANEL_DATA.kpis) return;
         const kpis = window.GRANEL_DATA.kpis;
+        const txs = window.GRANEL_DATA.transacciones || [];
 
         // Slide 1 KPIs
         const kpiComprasL = document.querySelector('#slide-1 .kpi-value.cyan');
@@ -45,6 +46,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const s2ExtraccionesL = document.querySelector('#slide-2 .kpi-value.rose');
         if (s2ExtraccionesL) s2ExtraccionesL.textContent = `${kpis.extraccionesLitros.toLocaleString('es-CL')} L`;
+
+        // Slide 4 Dynamic Seller Cards (CJ & Tripulacion)
+        let cjLitros = 0, cjMonto = 0, cjOps = 0;
+        let tripLitros = 0, tripMonto = 0, tripOps = 0;
+
+        txs.forEach(tx => {
+            const v = tx.vendedor || '';
+            const c = tx.cliente || '';
+            if (v.includes('ENAP') || c.includes('ENAP') || v.includes('Ignacio') || c.includes('Ignacio')) return;
+
+            if (v.includes('Tripulacion') || c.includes('Tripulacion')) {
+                tripLitros += tx.litros;
+                tripMonto += tx.total;
+                tripOps += 1;
+            } else if (v.includes('CJ') || c.includes('CJ') || tx.comision > 0) {
+                cjLitros += tx.litros;
+                cjMonto += tx.total;
+                cjOps += 1;
+            }
+        });
+
+        // Update Slide 4 CJ Card
+        const s4CjLitros = document.getElementById('s4CjLitros');
+        if (s4CjLitros) s4CjLitros.textContent = `${cjLitros.toLocaleString('es-CL')} L`;
+        
+        const s4CjMonto = document.getElementById('s4CjMonto');
+        if (s4CjMonto) s4CjMonto.textContent = `$${Math.round(cjMonto / 1000000 * 100) / 100}M`;
+
+        const s4CjOps = document.getElementById('s4CjOps');
+        if (s4CjOps) s4CjOps.textContent = `${cjOps} Ventas`;
+
+        // Update Slide 4 Tripulación Card
+        const s4TripLitros = document.getElementById('s4TripLitros');
+        if (s4TripLitros) s4TripLitros.textContent = `${tripLitros.toLocaleString('es-CL')} L`;
+
+        const s4TripMonto = document.getElementById('s4TripMonto');
+        if (s4TripMonto) s4TripMonto.textContent = `$${Math.round(tripMonto).toLocaleString('es-CL')}`;
+
+        const s4TripOps = document.getElementById('s4TripOps');
+        if (s4TripOps) s4TripOps.textContent = `${tripOps} Ventas`;
     }
 
     // Slide Navigation Function
@@ -197,13 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('chartVendedores');
         if (!ctx || chartVendedoresObj || !window.GRANEL_DATA) return;
 
-        // Calculate dynamic seller totals
         let cjLitros = 0;
         let tripLitros = 0;
 
         window.GRANEL_DATA.transacciones.forEach(tx => {
-            if (tx.vendedor.includes('CJ')) cjLitros += tx.litros;
-            if (tx.vendedor.includes('Tripulacion')) tripLitros += tx.litros;
+            const v = tx.vendedor || '';
+            const c = tx.cliente || '';
+            if (v.includes('Tripulacion') || c.includes('Tripulacion')) tripLitros += tx.litros;
+            else if (v.includes('CJ') || c.includes('CJ') || tx.comision > 0) cjLitros += tx.litros;
         });
 
         chartVendedoresObj = new Chart(ctx, {
@@ -211,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: ['CJ (Comisionista JC)', 'Tripulación (Ventas Directas)'],
                 datasets: [{
-                    data: [cjLitros > 0 ? cjLitros : 5108.8, tripLitros > 0 ? tripLitros : 1371.0],
+                    data: [cjLitros > 0 ? cjLitros : 5108.8, tripLitros > 0 ? tripLitros : 1627.0],
                     backgroundColor: ['#00f2fe', '#f59e0b'],
                     borderColor: '#0b0f19',
                     borderWidth: 3
