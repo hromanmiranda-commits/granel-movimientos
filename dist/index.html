@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granel Movimientos - Resumen Ejecutivo & Análisis 2026</title>
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- RemixIcon for SVG Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon">GM</div>
+            <div>
+                <div class="brand-title">GRANEL MOVIMIENTOS</div>
+                <div class="brand-subtitle">Ventas & Operaciones 2026</div>
+            </div>
+        </div>
+        <div class="nav-controls">
+            <button class="btn-toggle" id="btnOverview" title="Vista de Cuadrícula (G)">
+                <i class="ri-grid-fill"></i> Diapositivas
+            </button>
+            <button class="btn-toggle" id="btnFullscreen" title="Pantalla Completa (F11)">
+                <i class="ri-fullscreen-line"></i> Fullscreen
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Presentation Container -->
+    <main class="presentation-container">
+
+        <!-- SLIDE 1: Hero / Portada -->
+        <section class="slide slide-hero active" id="slide-1">
+            <div class="hero-badge">
+                <i class="ri-flashlight-line"></i> Informe Ejecutivo de Gestión
+            </div>
+            <h1 class="hero-title">Granel Movimientos</h1>
+            <p class="hero-desc">
+                Análisis integral de ventas a granel, rendimiento de inventario ENAP, control de comisiones y logística operativa.
+            </p>
+
+            <div class="grid-4" style="max-width: 1100px; width: 100%; margin-top: 1rem;">
+                <div class="glass-card">
+                    <div class="kpi-title">Compras Totales (ENAP)</div>
+                    <div class="kpi-value cyan">34,579 L</div>
+                    <div class="kpi-sub">
+                        <span class="badge badge-blue">ENAP Carga</span> 3 Guías oficiales
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-title">Ventas Totales Recaudadas</div>
+                    <div class="kpi-value emerald">$5,741,100</div>
+                    <div class="kpi-sub">
+                        <span class="badge badge-emerald">6,479.8 Litros</span> Recabados
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-title">Margen Bruto Unitario</div>
+                    <div class="kpi-value amber">62.3%</div>
+                    <div class="kpi-sub">
+                        <span class="badge badge-amber">+$551.81 / L</span> Ganancia neta/litro
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-title">Stock Saldo en Almacén</div>
+                    <div class="kpi-value purple">28,099.2 L</div>
+                    <div class="kpi-sub">
+                        <span class="badge badge-rose">Disponible</span> Valor a liquidar
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: Inventario & Balance de Litros -->
+        <section class="slide" id="slide-2">
+            <div class="slide-header">
+                <span class="slide-tag">Gestión de Volúmenes</span>
+                <h2 class="slide-title">Balance y Distribución de Litros (ENAP)</h2>
+                <p class="slide-subtitle">Monitoreo de entradas, ventas comerciales, extracciones operativas y stock disponible.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--primary-cyan);">
+                        <i class="ri-pie-chart-2-line"></i> Composición del Inventario
+                    </h3>
+                    <div class="chart-box">
+                        <canvas id="chartInventario"></canvas>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="glass-card">
+                        <div class="kpi-title">Total Litros Comprados</div>
+                        <div class="kpi-value cyan">34,579.0 L</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">
+                            Cargas en camiones VJYL61 y VJYL42 provenientes de ENAP. Costo acumulado $11,555,960 CLP.
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="kpi-title">Total Litros Vendidos</div>
+                        <div class="kpi-value emerald">6,479.8 L</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">
+                            17 transacciones comerciales a clientes residenciales y empresas (Ebal, Exquisite, Brisas, etc.).
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="kpi-title">Extracciones Operativas (Ignacio)</div>
+                        <div class="kpi-value rose">16,564.0 L</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">
+                            4 movimientos de extracción para distribución y apoyo logístico interno.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: Análisis Financiero y Margen -->
+        <section class="slide" id="slide-3">
+            <div class="slide-header">
+                <span class="slide-tag">Rentabilidad & Estructura de Precios</span>
+                <h2 class="slide-title">Indicadores Financieros y Márgenes</h2>
+                <p class="slide-subtitle">Comparativa de costos de adquisición vs. ingresos por venta y precios unitarios por litro.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--accent-emerald);">
+                        <i class="ri-bar-chart-grouped-line"></i> Compras vs. Recaudación Total ($)
+                    </h3>
+                    <div class="chart-box">
+                        <canvas id="chartFinanciero"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
+                    <div class="glass-card">
+                        <div class="kpi-title">Costo Promedio / L</div>
+                        <div class="kpi-value cyan">$334.19</div>
+                        <div class="kpi-sub">Costo base de compra ENAP</div>
+                    </div>
+                    <div class="glass-card">
+                        <div class="kpi-title">Precio Promedio / L</div>
+                        <div class="kpi-value emerald">$886.00</div>
+                        <div class="kpi-sub">Precio promedio cobrado</div>
+                    </div>
+                    <div class="glass-card" style="grid-column: span 2;">
+                        <div class="kpi-title">Spread / Utilidad Bruta por Litro</div>
+                        <div class="kpi-value amber">+$551.81 / L</div>
+                        <div style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--accent-amber); padding: 10px; border-radius: 6px; margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+                            Cada litro vendido genera una rentabilidad bruta del <strong>62.3%</strong>, absorbiendo con alto margen el costo de adquisición.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: Canales de Venta (CJ vs Tripulación) -->
+        <section class="slide" id="slide-4">
+            <div class="slide-header">
+                <span class="slide-tag">Rendimiento por Canal</span>
+                <h2 class="slide-title">Desglose de Ventas por Vendedor</h2>
+                <p class="slide-subtitle">Evaluación de participación de mercado entre la fuerza de ventas externa (CJ) y Tripulación.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--accent-purple);">
+                        <i class="ri-donut-chart-fill"></i> Participación en Litros Vendidos
+                    </h3>
+                    <div class="chart-box">
+                        <canvas id="chartVendedores"></canvas>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div class="glass-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="color: var(--primary-cyan); font-size: 1.1rem;">CJ (Comisionista JC)</h4>
+                            <span class="badge badge-emerald">78.8% del volumen</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Litros Vendidos</div>
+                                <div style="font-size: 1.2rem; font-weight: 700;">5,108.8 L</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Total Recaudado</div>
+                                <div style="font-size: 1.2rem; font-weight: 700; color: var(--accent-emerald);">$5.28M</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Operaciones</div>
+                                <div style="font-size: 1.2rem; font-weight: 700;">14 Ventas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="color: var(--accent-amber); font-size: 1.1rem;">Tripulación (Ventas Directas)</h4>
+                            <span class="badge badge-amber">21.2% del volumen</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Litros Vendidos</div>
+                                <div style="font-size: 1.2rem; font-weight: 700;">1,371.0 L</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Total Recaudado</div>
+                                <div style="font-size: 1.2rem; font-weight: 700; color: var(--accent-emerald);">$459,000</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.75rem; color: var(--text-dim);">Operaciones</div>
+                                <div style="font-size: 1.2rem; font-weight: 700;">3 Ventas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: Gestión de Comisiones y Cobranzas -->
+        <section class="slide" id="slide-5">
+            <div class="slide-header">
+                <span class="slide-tag">Control de Pagos</span>
+                <h2 class="slide-title">Estado de Comisiones (Canal CJ)</h2>
+                <p class="slide-subtitle">Seguimiento detallado de comisiones pagadas versus saldo pendiente por liquidar.</p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 1.5rem;">
+                <div class="glass-card">
+                    <div class="kpi-title">Comisiones Generadas Totales</div>
+                    <div class="kpi-value cyan">$1,021,760</div>
+                    <div class="kpi-sub">Total asignado por ventas CJ</div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-title">Comisiones Pagadas</div>
+                    <div class="kpi-value emerald">$485,760</div>
+                    <div class="kpi-sub"><span class="badge badge-emerald">Liquidado</span> Período 27/07/2026</div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-title">Comisiones Pendientes</div>
+                    <div class="kpi-value rose">$536,000</div>
+                    <div class="kpi-sub"><span class="badge badge-rose">Por Cobrar/Liquidar</span> 28/07 - 11/08</div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1rem; color: var(--accent-amber);">
+                    <i class="ri-wallet-3-line"></i> Proporción de Liquidación de Comisiones
+                </h3>
+                <div style="height: 24px; background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; display: flex;">
+                    <div style="width: 47.5%; background: linear-gradient(90deg, var(--accent-emerald), #34d399); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #0b0f19;">
+                        47.5% Pagado ($485.7K)
+                    </div>
+                    <div style="width: 52.5%; background: linear-gradient(90deg, var(--accent-rose), #f87171); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #ffffff;">
+                        52.5% Pendiente ($536K)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: Logística & Distribución por Camión -->
+        <section class="slide" id="slide-6">
+            <div class="slide-header">
+                <span class="slide-tag">Operaciones & Flota</span>
+                <h2 class="slide-title">Despachos por Vehículo (Camiones)</h2>
+                <p class="slide-subtitle">Distribución de carga, operaciones de ruta y recarga en ENAP según patente.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                        <div style="width: 48px; height: 48px; background: rgba(0,242,254,0.1); border: 1px solid var(--primary-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary-cyan);">
+                            <i class="ri-truck-line"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: #ffffff; font-size: 1.3rem;">Camión VJYL61</h3>
+                            <span class="badge badge-blue">19 Operaciones Totales</span>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: var(--text-muted);">
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-emerald);"></i> <strong>Ventas Atendidas:</strong> 15 clientes abastecidos</li>
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-emerald);"></i> <strong>Cargas ENAP:</strong> 2 recargas oficiales (Guía N° 2356453 + Carga Inicial)</li>
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-emerald);"></i> <strong>Extracciones Ignacio:</strong> 3 extracciones de ruta</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                        <div style="width: 48px; height: 48px; background: rgba(245,158,11,0.1); border: 1px solid var(--accent-amber); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent-amber);">
+                            <i class="ri-truck-fill"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: #ffffff; font-size: 1.3rem;">Camión VJYL42</h3>
+                            <span class="badge badge-amber">2 Operaciones Especiales</span>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: var(--text-muted);">
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-amber);"></i> <strong>Carga ENAP Heavy Duty:</strong> 11,617 Litros (Guía N° 2356186)</li>
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-amber);"></i> <strong>Extracción de Alto Volumen:</strong> 11,539 Litros extraídos por Ignacio</li>
+                        <li><i class="ri-checkbox-circle-fill" style="color: var(--accent-amber);"></i> <strong>Función Principal:</strong> Transporte de granel y alta capacidad</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: Dashboard Explorable Interactivo -->
+        <section class="slide" id="slide-7">
+            <div class="slide-header" style="margin-bottom: 1rem;">
+                <span class="slide-tag">Explorador de Datos</span>
+                <h2 class="slide-title">Registro Completo de Movimientos</h2>
+                <p class="slide-subtitle">Filtra y explora las 24 operaciones registradas en tiempo real.</p>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="input-search" placeholder="🔍 Buscar por cliente, dirección u observación...">
+                <select id="sellerFilter" class="select-filter">
+                    <option value="ALL">Todos los Vendedores</option>
+                    <option value="CJ">CJ (Comisionista JC)</option>
+                    <option value="Tripulacion">Tripulación</option>
+                    <option value="Ignacio">Ignacio</option>
+                    <option value="ENAP carga">ENAP carga</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Camión</th>
+                            <th>Vendedor</th>
+                            <th>Precio/L</th>
+                            <th>Litros</th>
+                            <th>Total ($)</th>
+                            <th>Medio de Pago</th>
+                            <th>Comisión ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Filled dynamically by app.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: Conclusiones y Recomendaciones Estratégicas -->
+        <section class="slide" id="slide-8">
+            <div class="slide-header">
+                <span class="slide-tag">Estrategia & Próximos Pasos</span>
+                <h2 class="slide-title">Recomendaciones y Plan de Acción</h2>
+                <p class="slide-subtitle">Lineamientos ejecutivos para maximizar el margen y flujo de caja.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="glass-card">
+                    <div style="font-size: 2rem; color: var(--accent-emerald); margin-bottom: 10px;">
+                        <i class="ri-money-dollar-circle-line"></i>
+                    </div>
+                    <h3 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 8px;">1. Liquidación de Comisiones</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                        Regularizar el pago de <strong>$536,000 CLP</strong> en comisiones pendientes del canal CJ para incentivar mayores volúmenes de venta.
+                    </p>
+                </div>
+
+                <div class="glass-card">
+                    <div style="font-size: 2rem; color: var(--primary-cyan); margin-bottom: 10px;">
+                        <i class="ri-store-2-line"></i>
+                    </div>
+                    <h3 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 8px;">2. Monetización de Stock</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                        Disponibilidad de <strong>28,099.2 Litros en stock</strong> con un valor potencial de venta de <strong>+$24.8M CLP</strong> (a $886/L promedio).
+                    </p>
+                </div>
+
+                <div class="glass-card">
+                    <div style="font-size: 2rem; color: var(--accent-amber); margin-bottom: 10px;">
+                        <i class="ri-shield-check-line"></i>
+                    </div>
+                    <h3 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 8px;">3. Audit de Extracciones</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                        Consolidar las 4 operaciones de extracción (16,564 Litros) en el módulo de ventas para asegurar trazabilidad operativa exacta.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar Controls -->
+    <footer class="bottom-bar">
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="slide-counter">
+            <span class="current" id="currentSlideNum">01</span> / <span id="totalSlideNum">08</span>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-nav" id="btnPrev" title="Anterior (Flecha Izquierda)">
+                <i class="ri-arrow-left-line"></i>
+            </button>
+            <button class="btn-nav" id="btnNext" title="Siguiente (Flecha Derecha)">
+                <i class="ri-arrow-right-line"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Overview Modal (Thumbnails) -->
+    <div class="overview-modal" id="overviewModal">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-family: var(--font-heading); color: #ffffff;">Vista General de Diapositivas</h2>
+            <button class="btn-toggle" id="btnCloseOverview"><i class="ri-close-line"></i> Cerrar</button>
+        </div>
+        <div class="overview-grid" id="overviewGrid">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
