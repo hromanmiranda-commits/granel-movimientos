@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-14 11:45:06)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-14 13:53:51)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 34579.0,
@@ -351,6 +351,34 @@ window.GRANEL_DATA = {
         "comision": 0,
         "observacion": "",
         "detalles": "Guía N° 2356453"
+    },
+    {
+        "fecha": "2026-08-13",
+        "cliente": "Mister Guss SpA",
+        "camion": "VJYL61",
+        "vendedor": "Tripulacion",
+        "direccion": "PRIMERA TRANSVERSAL 828 PADRE HURTADO",
+        "precio": 1000.0,
+        "litros": 256.0,
+        "total": 0,
+        "medioPago": "256000",
+        "comision": 0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-14",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0,
+        "litros": 0,
+        "total": 0,
+        "medioPago": "N/A",
+        "comision": 0,
+        "observacion": "",
+        "detalles": "Guía N° 2356889"
     }
 ]
 };

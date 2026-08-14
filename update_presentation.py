@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import openpyxl, json, os
+import openpyxl, json, os, subprocess
 from datetime import datetime
 
 print("==================================================")
@@ -72,15 +72,33 @@ window.GRANEL_DATA = {{
 }};
 '''
 
-os.makedirs('dist/js', exist_ok=True)
+os.makedirs('js', exist_ok=True)
 with open('js/data.js', 'w', encoding='utf-8') as f:
     f.write(data_js_content)
 
+os.makedirs('dist/js', exist_ok=True)
 with open('dist/js/data.js', 'w', encoding='utf-8') as f:
     f.write(data_js_content)
 
-# Update zip package
-os.system("zip -r /Users/hector/Desktop/presentacion_granel_movimientos.zip index.html styles.css js/ > /dev/null")
+print(f"✓ Datos locales procesados. Total transacciones: {len(transactions)}")
 
-print(f"✓ Datos sincronizados con éxito. Total transacciones: {len(transactions)}")
-print("✓ El paquete presentacion_granel_movimientos.zip en tu Escritorio fue actualizado.")
+# Automatic Git Push to GitHub
+try:
+    token_path = '.github_token'
+    if os.path.exists(token_path):
+        with open(token_path, 'r') as tf:
+            token = tf.read().strip()
+        user = 'hromanmiranda-commits'
+        remote_url = f'https://{token}@github.com/{user}/granel-movimientos.git'
+        
+        subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
+        subprocess.run(["git", "add", "."], check=True)
+        subprocess.run(["git", "commit", "-m", f"Auto-update sales data {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+        print("==================================================")
+        print("🚀 ¡NUEVOS DATOS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
+        print("==================================================")
+    else:
+        print("ℹ️ Archivo .github_token no encontrado.")
+except Exception as e:
+    print(f"Error en sincronización Git: {e}")
