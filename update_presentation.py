@@ -19,10 +19,25 @@ rows = list(ws.iter_rows(values_only=True))
 
 compras_l = 0.0
 monto_compras = 0.0
+guias_enap = 0
+
 ventas_l = 0.0
 monto_ventas = 0.0
+ventas_ops = 0
+
 extracciones_l = 0.0
-comisiones = 0.0
+extracciones_ops = 0
+
+comisiones_pagadas = 0.0
+comisiones_pendientes = 0.0
+
+camion_vjyl61_ops = 0
+camion_vjyl42_ops = 0
+
+# Row 4 contains column headers:
+# [2] Fecha, [3] Nombre Cliente, [4] Camión, [5] Vende, [6] Dirección,
+# [7] Precio, [8] Litros Vendidos, [9] Extraccion, [10] Total Recaudado,
+# [11] Medio de pago, [12] Comisiones, [13] Observación, [14] COMPRA ENAP, [15] Litros Comprados
 
 for row in rows[4:]:
     if not row or len(row) < 3 or row[2] is None: continue
@@ -30,34 +45,45 @@ for row in rows[4:]:
     if not isinstance(fecha_val, datetime): continue
     fecha_str = fecha_val.strftime('%Y-%m-%d')
     
-    cliente = str(row[3]) if row[3] is not None else ''
-    camion = str(row[4]) if row[4] is not None else ''
-    vendedor = str(row[5]) if row[5] is not None else ''
-    direccion = str(row[6]) if len(row) > 6 and row[6] not in (None, 0) else 'N/A'
-    precio = float(row[7]) if len(row) > 7 and isinstance(row[7], (int, float)) else 0
-    litros = float(row[8]) if len(row) > 8 and isinstance(row[8], (int, float)) else 0
-    total = float(row[9]) if len(row) > 9 and isinstance(row[9], (int, float)) else 0
+    cliente = str(row[3]).strip() if row[3] not in (None, '') else ''
+    camion = str(row[4]).strip() if row[4] not in (None, '') else ''
+    vendedor = str(row[5]).strip() if row[5] not in (None, '') else ''
+    direccion = str(row[6]).strip() if len(row) > 6 and row[6] not in (None, 0, '') else 'N/A'
+    precio = float(row[7]) if len(row) > 7 and isinstance(row[7], (int, float)) else 0.0
+    litros = float(row[8]) if len(row) > 8 and isinstance(row[8], (int, float)) else 0.0
+    extraccion = float(row[9]) if len(row) > 9 and isinstance(row[9], (int, float)) else 0.0
+    total = float(row[10]) if len(row) > 10 and isinstance(row[10], (int, float)) else 0.0
     if total == 0 and precio > 0 and litros > 0:
         total = precio * litros
 
-    medioPago = str(row[10]) if len(row) > 10 and row[10] not in (None, 0) else 'N/A'
-    comision = float(row[11]) if len(row) > 11 and isinstance(row[11], (int, float)) else 0
-    observacion = str(row[12]) if len(row) > 12 and row[12] not in (None, 0) else ''
-    detalles = str(row[13]) if len(row) > 13 and row[13] not in (None, 0) else ''
+    medioPago = str(row[11]).strip() if len(row) > 11 and row[11] not in (None, 0, '') else 'N/A'
+    comision = float(row[12]) if len(row) > 12 and isinstance(row[12], (int, float)) else 0.0
+    observacion = str(row[13]).strip() if len(row) > 13 and row[13] not in (None, 0, '') else ''
+    compra_monto = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0.0
+    compra_litros = float(row[15]) if len(row) > 15 and isinstance(row[15], (int, float)) else 0.0
+    detalles = str(row[16]).strip() if len(row) > 16 and row[16] not in (None, 0, '') else ''
 
-    compra_monto = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0
-    compra_litros = float(row[15]) if len(row) > 15 and isinstance(row[15], (int, float)) else 0
+    if 'VJYL61' in camion:
+        camion_vjyl61_ops += 1
+    elif 'VJYL42' in camion:
+        camion_vjyl42_ops += 1
 
     if 'ENAP' in cliente or 'ENAP' in vendedor or compra_litros > 0:
         compras_l += compra_litros
         monto_compras += compra_monto
-    elif 'Ignacio' in vendedor or 'Ignacio' in cliente:
-        extraccion_val = litros if litros > 0 else (total if total > 0 else 0)
-        extracciones_l += extraccion_val
+        guias_enap += 1
+    elif 'Ignacio' in vendedor or 'Ignacio' in cliente or extraccion > 0:
+        extracciones_l += extraccion if extraccion > 0 else litros
+        extracciones_ops += 1
     else:
         ventas_l += litros
         monto_ventas += total
-        comisiones += comision
+        ventas_ops += 1
+        
+        if 'Pagada' in observacion or 'Tarjeta' in medioPago:
+            comisiones_pagadas += comision
+        else:
+            comisiones_pendientes += comision
 
     tx = {
         'fecha': fecha_str,
@@ -66,8 +92,8 @@ for row in rows[4:]:
         'vendedor': vendedor,
         'direccion': direccion,
         'precio': precio,
-        'litros': litros,
-        'total': total,
+        'litros': litros if litros > 0 else (extraccion if extraccion > 0 else compra_litros),
+        'total': total if total > 0 else compra_monto,
         'medioPago': medioPago,
         'comision': comision,
         'observacion': observacion,
@@ -75,11 +101,12 @@ for row in rows[4:]:
     }
     transactions.append(tx)
 
+total_comisiones = comisiones_pagadas + comisiones_pendientes
 stock_saldo = compras_l - ventas_l
-costo_prom_l = (monto_compras / compras_l) if compras_l > 0 else 334.19
-precio_prom_l = (monto_ventas / ventas_l) if ventas_l > 0 else 886.00
+costo_prom_l = (monto_compras / compras_l) if compras_l > 0 else 336.77
+precio_prom_l = (monto_ventas / ventas_l) if ventas_l > 0 else 890.33
 margen_prom_l = precio_prom_l - costo_prom_l
-pct_margen = (margen_prom_l / precio_prom_l * 100) if precio_prom_l > 0 else 62.3
+pct_margen = (margen_prom_l / precio_prom_l * 100) if precio_prom_l > 0 else 62.2
 
 ts_ver = int(time.time())
 
@@ -92,13 +119,18 @@ window.GRANEL_DATA = {{
         extraccionesLitros: {extracciones_l},
         montoCompras: {monto_compras},
         montoVentas: {monto_ventas},
-        comisionesPagadas: 485760,
-        comisionesPendientes: 536000,
-        totalComisiones: {comisiones if comisiones > 0 else 1021760},
+        guiasEnap: {guias_enap},
+        ventasOps: {ventas_ops},
+        extraccionesOps: {extracciones_ops},
+        comisionesPagadas: {comisiones_pagadas},
+        comisionesPendientes: {comisiones_pendientes},
+        totalComisiones: {total_comisiones},
         costoPromedioLitro: {costo_prom_l:.2f},
         precioPromedioVentaLitro: {precio_prom_l:.2f},
         margenPromedioLitro: {margen_prom_l:.2f},
-        porcentajeMargenBruto: {pct_margen:.1f}
+        porcentajeMargenBruto: {pct_margen:.1f},
+        camionVJYL61Ops: {camion_vjyl61_ops},
+        camionVJYL42Ops: {camion_vjyl42_ops}
     }},
     transacciones: {json.dumps(transactions, indent=4, ensure_ascii=False)}
 }};
@@ -127,11 +159,12 @@ if os.path.exists('index.html'):
     with open('dist/index.html', 'w', encoding='utf-8') as f:
         f.write(updated_html)
 
-print(f"✓ ENAP Compras recalculadas: {compras_l:,.1f} Litros por ${monto_compras:,.0f} CLP")
-print(f"✓ Ventas recalculadas: {ventas_l:,.1f} Litros por ${monto_ventas:,.0f} CLP")
+print(f"✓ ENAP Compras recalculadas: {compras_l:,.1f} Litros por ${monto_compras:,.0f} CLP ({guias_enap} Guías)")
+print(f"✓ Ventas recalculadas: {ventas_l:,.1f} Litros por ${monto_ventas:,.0f} CLP ({ventas_ops} Ventas)")
 print(f"✓ Stock Saldo actual: {stock_saldo:,.1f} Litros")
+print(f"✓ Total Operaciones registradas: {len(transactions)}")
 
-# Automatic Git Push to GitHub
+# Automatic Git Commit (push if remote accessible)
 try:
     token_path = '.github_token'
     if os.path.exists(token_path):
@@ -142,12 +175,16 @@ try:
         
         subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
         subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", f"ENAP Purchases dynamic recalculation {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("==================================================")
-        print("🚀 ¡NUEVOS DATOS DE ENAP Y COMPRAS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
-        print("==================================================")
+        subprocess.run(["git", "commit", "-m", f"Actualización de datos Granel Movimientos {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=False)
+        res = subprocess.run(["git", "push", "origin", "main"], check=False, capture_output=True, text=True)
+        if res.returncode == 0:
+            print("==================================================")
+            print("🚀 ¡NUEVOS DATOS ENVIADOS A GITHUB AUTOMÁTICAMENTE!")
+            print("==================================================")
+        else:
+            print("ℹ️ Git commit completado localmente.")
     else:
         print("ℹ️ Archivo .github_token no encontrado.")
 except Exception as e:
-    print(f"Error en sincronización Git: {e}")
+    print(f"Info Git: {e}")
+

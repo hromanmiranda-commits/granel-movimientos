@@ -24,28 +24,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const kpis = window.GRANEL_DATA.kpis;
         const txs = window.GRANEL_DATA.transacciones || [];
 
+        const formatCLP = (val) => '$' + Math.round(val).toLocaleString('es-CL');
+        const formatLitros = (val) => `${val.toLocaleString('es-CL')} L`;
+
         // Slide 1 KPIs
         const kpiComprasL = document.querySelector('#slide-1 .kpi-value.cyan');
-        if (kpiComprasL) kpiComprasL.textContent = `${kpis.comprasLitros.toLocaleString('es-CL')} L`;
+        if (kpiComprasL) kpiComprasL.textContent = formatLitros(kpis.comprasLitros);
+
+        const kpiComprasSub = document.querySelector('#slide-1 .kpi-sub');
+        if (kpiComprasSub) kpiComprasSub.innerHTML = `<span class="badge badge-blue">ENAP Carga</span> ${kpis.guiasEnap || 6} Guías oficiales`;
 
         const kpiVentasMonto = document.querySelector('#slide-1 .kpi-value.emerald');
-        if (kpiVentasMonto) kpiVentasMonto.textContent = `$${Math.round(kpis.montoVentas).toLocaleString('es-CL')}`;
+        if (kpiVentasMonto) kpiVentasMonto.textContent = formatCLP(kpis.montoVentas);
 
         const kpiVentasLitrosSub = document.querySelector('#slide-1 .badge.badge-emerald');
         if (kpiVentasLitrosSub) kpiVentasLitrosSub.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} Litros`;
 
+        const kpiMargenPct = document.querySelector('#slide-1 .kpi-value.amber');
+        if (kpiMargenPct) kpiMargenPct.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
+
+        const kpiMargenSub = document.querySelector('#slide-1 .badge.badge-amber');
+        if (kpiMargenSub) kpiMargenSub.textContent = `+${formatCLP(kpis.margenPromedioLitro)} / L`;
+
         const kpiStockSaldo = document.querySelector('#slide-1 .kpi-value.purple');
-        if (kpiStockSaldo) kpiStockSaldo.textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} L`;
+        if (kpiStockSaldo) kpiStockSaldo.textContent = formatLitros(kpis.stockSaldoLitros);
 
         // Slide 2 KPIs
         const s2ComprasL = document.querySelector('#slide-2 .kpi-value.cyan');
-        if (s2ComprasL) s2ComprasL.textContent = `${kpis.comprasLitros.toLocaleString('es-CL')} L`;
+        if (s2ComprasL) s2ComprasL.textContent = formatLitros(kpis.comprasLitros);
+
+        const s2ComprasDesc = document.querySelector('#slide-2 .glass-card:nth-child(1) p');
+        if (s2ComprasDesc) s2ComprasDesc.textContent = `Cargas en camiones VJYL61 y VJYL42 provenientes de ENAP. Costo acumulado ${formatCLP(kpis.montoCompras)} CLP.`;
 
         const s2VentasL = document.querySelector('#slide-2 .kpi-value.emerald');
-        if (s2VentasL) s2VentasL.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} L`;
+        if (s2VentasL) s2VentasL.textContent = formatLitros(kpis.ventasLitros);
+
+        const s2VentasDesc = document.querySelector('#slide-2 .glass-card:nth-child(2) p');
+        if (s2VentasDesc) s2VentasDesc.textContent = `${kpis.ventasOps || 18} transacciones comerciales a clientes residenciales y empresas.`;
 
         const s2ExtraccionesL = document.querySelector('#slide-2 .kpi-value.rose');
-        if (s2ExtraccionesL) s2ExtraccionesL.textContent = `${kpis.extraccionesLitros.toLocaleString('es-CL')} L`;
+        if (s2ExtraccionesL) s2ExtraccionesL.textContent = formatLitros(kpis.extraccionesLitros);
+
+        const s2ExtraccionesDesc = document.querySelector('#slide-2 .glass-card:nth-child(3) p');
+        if (s2ExtraccionesDesc) s2ExtraccionesDesc.textContent = `${kpis.extraccionesOps || 4} movimientos de extracción para distribución y apoyo logístico interno.`;
+
+        // Slide 3 KPIs
+        const s3CostoProm = document.querySelector('#slide-3 .kpi-value.cyan');
+        if (s3CostoProm) s3CostoProm.textContent = formatCLP(kpis.costoPromedioLitro);
+
+        const s3PrecioProm = document.querySelector('#slide-3 .kpi-value.emerald');
+        if (s3PrecioProm) s3PrecioProm.textContent = formatCLP(kpis.precioPromedioVentaLitro);
+
+        const s3MargenL = document.querySelector('#slide-3 .kpi-value.amber');
+        if (s3MargenL) s3MargenL.textContent = `+${formatCLP(kpis.margenPromedioLitro)} / L`;
+
+        const s3MargenDesc = document.querySelector('#slide-3 strong');
+        if (s3MargenDesc) s3MargenDesc.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
 
         // Slide 4 Dynamic Seller Cards (CJ & Tripulacion)
         let cjLitros = 0, cjMonto = 0, cjOps = 0;
@@ -67,25 +101,82 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update Slide 4 CJ Card
+        const totalVolVentas = cjLitros + tripLitros;
+        const cjPct = totalVolVentas > 0 ? (cjLitros / totalVolVentas * 100).toFixed(1) : '75.8';
+        const tripPct = totalVolVentas > 0 ? (tripLitros / totalVolVentas * 100).toFixed(1) : '24.2';
+
         const s4CjLitros = document.getElementById('s4CjLitros');
         if (s4CjLitros) s4CjLitros.textContent = `${cjLitros.toLocaleString('es-CL')} L`;
         
         const s4CjMonto = document.getElementById('s4CjMonto');
-        if (s4CjMonto) s4CjMonto.textContent = `$${Math.round(cjMonto / 1000000 * 100) / 100}M`;
+        if (s4CjMonto) s4CjMonto.textContent = `$${(cjMonto / 1000000).toFixed(2)}M`;
 
         const s4CjOps = document.getElementById('s4CjOps');
         if (s4CjOps) s4CjOps.textContent = `${cjOps} Ventas`;
 
-        // Update Slide 4 Tripulación Card
+        const s4CjBadge = document.querySelector('#slide-4 .badge.badge-emerald');
+        if (s4CjBadge) s4CjBadge.textContent = `${cjPct}% del volumen`;
+
         const s4TripLitros = document.getElementById('s4TripLitros');
         if (s4TripLitros) s4TripLitros.textContent = `${tripLitros.toLocaleString('es-CL')} L`;
 
         const s4TripMonto = document.getElementById('s4TripMonto');
-        if (s4TripMonto) s4TripMonto.textContent = `$${Math.round(tripMonto).toLocaleString('es-CL')}`;
+        if (s4TripMonto) s4TripMonto.textContent = formatCLP(tripMonto);
 
         const s4TripOps = document.getElementById('s4TripOps');
         if (s4TripOps) s4TripOps.textContent = `${tripOps} Ventas`;
+
+        const s4TripBadge = document.querySelector('#slide-4 .badge.badge-amber');
+        if (s4TripBadge) s4TripBadge.textContent = `${tripPct}% del volumen`;
+
+        // Slide 5 KPIs
+        const s5ComisionesTotal = document.querySelector('#slide-5 .kpi-value.cyan');
+        if (s5ComisionesTotal) s5ComisionesTotal.textContent = formatCLP(kpis.totalComisiones);
+
+        const s5ComisionesPagadas = document.querySelector('#slide-5 .kpi-value.emerald');
+        if (s5ComisionesPagadas) s5ComisionesPagadas.textContent = formatCLP(kpis.comisionesPagadas);
+
+        const s5ComisionesPendientes = document.querySelector('#slide-5 .kpi-value.rose');
+        if (s5ComisionesPendientes) s5ComisionesPendientes.textContent = formatCLP(kpis.comisionesPendientes);
+
+        const pctPagado = kpis.totalComisiones > 0 ? (kpis.comisionesPagadas / kpis.totalComisiones * 100).toFixed(1) : 47.5;
+        const pctPend = kpis.totalComisiones > 0 ? (kpis.comisionesPendientes / kpis.totalComisiones * 100).toFixed(1) : 52.5;
+
+        const s5BarPagado = document.querySelector('#slide-5 .glass-card:last-child div div:nth-child(1)');
+        if (s5BarPagado) {
+            s5BarPagado.style.width = `${pctPagado}%`;
+            s5BarPagado.textContent = `${pctPagado}% Pagado ($${Math.round(kpis.comisionesPagadas/1000)}K)`;
+        }
+        const s5BarPend = document.querySelector('#slide-5 .glass-card:last-child div div:nth-child(2)');
+        if (s5BarPend) {
+            s5BarPend.style.width = `${pctPend}%`;
+            s5BarPend.textContent = `${pctPend}% Pendiente ($${Math.round(kpis.comisionesPendientes/1000)}K)`;
+        }
+
+        // Slide 6 KPIs
+        const s6Vjyl61Badge = document.querySelector('#slide-6 .badge.badge-blue');
+        if (s6Vjyl61Badge) s6Vjyl61Badge.textContent = `${kpis.camionVJYL61Ops || 23} Operaciones Totales`;
+
+        const s6Vjyl42Badge = document.querySelector('#slide-6 .badge.badge-amber');
+        if (s6Vjyl42Badge) s6Vjyl42Badge.textContent = `${kpis.camionVJYL42Ops || 5} Operaciones Totales`;
+
+        // Slide 7 Subtitle
+        const s7Sub = document.querySelector('#slide-7 .slide-subtitle');
+        if (s7Sub) s7Sub.textContent = `Filtra y explora las ${txs.length} operaciones registradas en tiempo real.`;
+
+        // Slide 8 Recommendations
+        const s8Card1Strong = document.querySelector('#slide-8 .glass-card:nth-child(1) strong');
+        if (s8Card1Strong) s8Card1Strong.textContent = `${formatCLP(kpis.comisionesPendientes)} CLP`;
+
+        const s8Card2Strongs = document.querySelectorAll('#slide-8 .glass-card:nth-child(2) strong');
+        if (s8Card2Strongs.length >= 2) {
+            s8Card2Strongs[0].textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} Litros en stock`;
+            const valorStock = (kpis.stockSaldoLitros * kpis.precioPromedioVentaLitro) / 1000000;
+            s8Card2Strongs[1].textContent = `+$${valorStock.toFixed(1)}M CLP`;
+        }
+
+        const s8Card3Strong = document.querySelector('#slide-8 .glass-card:nth-child(3) strong');
+        if (s8Card3Strong) s8Card3Strong.textContent = `${kpis.extraccionesOps || 4} operaciones de extracción (${kpis.extraccionesLitros.toLocaleString('es-CL')} Litros)`;
     }
 
     // Slide Navigation Function
