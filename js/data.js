@@ -1,19 +1,19 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-14 14:21:23)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-19 17:07:38)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 46235.0,
+        comprasLitros: 68985.0,
         ventasLitros: 6735.8,
-        stockSaldoLitros: 39499.2,
+        stockSaldoLitros: 62249.2,
         extraccionesLitros: 16564.0,
-        montoCompras: 15451082.0,
+        montoCompras: 23231995.0,
         montoVentas: 5997100.0,
         comisionesPagadas: 485760,
         comisionesPendientes: 536000,
         totalComisiones: 1021760,
-        costoPromedioLitro: 334.19,
+        costoPromedioLitro: 336.77,
         precioPromedioVentaLitro: 890.33,
-        margenPromedioLitro: 556.15,
-        porcentajeMargenBruto: 62.5
+        margenPromedioLitro: 553.56,
+        porcentajeMargenBruto: 62.2
     },
     transacciones: [
     {
@@ -379,6 +379,34 @@ window.GRANEL_DATA = {
         "comision": 0,
         "observacion": "",
         "detalles": "Guía N° 2356889"
+    },
+    {
+        "fecha": "2026-08-18",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0,
+        "litros": 0,
+        "total": 0,
+        "medioPago": "N/A",
+        "comision": 0,
+        "observacion": "",
+        "detalles": "Guía N° 2358078"
+    },
+    {
+        "fecha": "2026-08-19",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0,
+        "litros": 0,
+        "total": 0,
+        "medioPago": "N/A",
+        "comision": 0,
+        "observacion": "",
+        "detalles": "Guía N° 2358522"
     }
 ]
 };
