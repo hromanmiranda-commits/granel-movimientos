@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const badgeVentasLitros = document.getElementById('badgeVentasLitros');
         if (badgeVentasLitros) badgeVentasLitros.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} Litros`;
 
-        const valMargen = document.getElementById('valMargen');
+        const valMargen = document.getElementById('valMargenPct') || document.getElementById('valMargen');
         if (valMargen) valMargen.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
 
         const badgeSpreadUnit = document.getElementById('badgeSpreadUnit');
