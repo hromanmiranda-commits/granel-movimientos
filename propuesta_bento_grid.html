@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granel Movimientos - Propuesta 2: Bento Grid Executive</title>
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #0d111a;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bento-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(22, 30, 46, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.75rem;
+            border-radius: 16px;
+        }
+
+        .bento-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1.25rem;
+            max-width: 1500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .bento-card {
+            background: rgba(22, 30, 46, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .bento-hero {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08), rgba(18, 26, 43, 0.9));
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .bento-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .bento-big-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+            margin: 8px 0;
+        }
+
+        .alert-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(18, 26, 43, 0.9));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bento Top Bar -->
+    <header class="bento-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #00f2fe, #4facfe); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #0d111a;">GM</div>
+            <div>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem;">Granel Movimientos</h2>
+                <span style="font-size: 0.75rem; color: #00f2fe;">PROPUESTA 2: MODULAR BENTO GRID</span>
+            </div>
+        </div>
+        <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); color: #00f2fe; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">
+            <i class="ri-refresh-line"></i> Última actualización: 19/08/2026 17:18 hrs
+        </div>
+    </header>
+
+    <!-- Bento Grid Container -->
+    <div class="bento-grid-container">
+
+        <!-- Hero Card: Stock -->
+        <div class="bento-card bento-hero">
+            <div>
+                <div class="bento-title"><i class="ri-database-2-line"></i> Stock Disponible Almacén</div>
+                <div class="bento-big-num" style="color: #00f2fe;">62,249.2 Litros</div>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #94a3b8;">
+                <span class="badge badge-emerald" style="padding: 4px 10px;">Valor en Almacén: +$55.4M CLP</span>
+                <span>Saldo ENAP disponible para liquidar y vender</span>
+            </div>
+        </div>
+
+        <!-- ENAP Purchases Card -->
+        <div class="bento-card">
+            <div class="bento-title"><i class="ri-truck-line"></i> Compras ENAP</div>
+            <div class="bento-big-num" style="color: #8b5cf6;">68,985 L</div>
+            <div style="font-size: 0.85rem; color: #94a3b8;">6 Guías Oficiales | $23.2M CLP acumulados</div>
+        </div>
+
+        <!-- Sales Recaudadas -->
+        <div class="bento-card">
+            <div class="bento-title"><i class="ri-shopping-cart-2-line"></i> Ventas Recaudadas</div>
+            <div class="bento-big-num" style="color: #10b981;">$5.99M</div>
+            <div style="font-size: 0.85rem; color: #94a3b8;">6,735.8 Litros recabados en 18 ventas</div>
+        </div>
+
+        <!-- Margin Card -->
+        <div class="bento-card">
+            <div class="bento-title"><i class="ri-line-chart-line"></i> Margen Bruto</div>
+            <div class="bento-big-num" style="color: #f59e0b;">62.2%</div>
+            <div style="font-size: 0.85rem; color: #94a3b8;">+$553.56 CLP ganancia bruta por litro</div>
+        </div>
+
+        <!-- Alert Commission Card -->
+        <div class="bento-card alert-card">
+            <div class="bento-title" style="color: #ef4444;"><i class="ri-error-warning-line"></i> Pendiente Comisiones CJ</div>
+            <div class="bento-big-num" style="color: #ef4444;">$536,000</div>
+            <div style="font-size: 0.85rem; color: #94a3b8;">52.5% del total de comisiones por liquidar</div>
+        </div>
+
+        <!-- Channel Performance Card (Wide) -->
+        <div class="bento-card" style="grid-column: span 2;">
+            <div class="bento-title"><i class="ri-pie-chart-fill"></i> Desglose por Canal de Ventas</div>
+            <div style="display: flex; align-items: center; justify-content: space-around; height: 140px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.2rem; font-weight: 800; color: #00f2fe;">75.8%</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8;">Canal CJ (5,108.8 L)</div>
+                </div>
+                <div style="font-size: 1.5rem; color: #64748b;">VS</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.2rem; font-weight: 800; color: #f59e0b;">24.2%</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8;">Tripulación (1,627.0 L)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unit Cost vs Selling Price -->
+        <div class="bento-card">
+            <div class="bento-title"><i class="ri-exchange-dollar-line"></i> Unitario / Litro</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span>Costo ENAP:</span>
+                    <strong style="color: #00f2fe;">$336.77 / L</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span>Precio Venta:</span>
+                    <strong style="color: #10b981;">$890.33 / L</strong>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

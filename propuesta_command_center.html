@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granel Movimientos - Propuesta 1: Executive Command Center</title>
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- RemixIcon for SVG Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+        .standalone-container {
+            flex: 1;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-y: auto;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .timestamp-badge {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-box-compact {
+            position: relative;
+            height: 220px;
+            width: 100%;
+        }
+        .channel-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon">GM</div>
+            <div>
+                <div class="brand-title">GRANEL MOVIMIENTOS</div>
+                <div class="brand-subtitle">PROPUESTA 1: EXECUTIVE COMMAND CENTER</div>
+            </div>
+        </div>
+        <div class="timestamp-badge">
+            <i class="ri-time-line"></i> Datos actualizados al: 19/08/2026 17:18 hrs
+        </div>
+    </nav>
+
+    <!-- Main Single-Page Command Center -->
+    <div class="standalone-container">
+
+        <!-- Header Title Banner -->
+        <div class="header-bar">
+            <div>
+                <h1 style="font-family: var(--font-heading); font-size: 1.8rem; color: #ffffff;">
+                    Lámina Ejecutiva Consolidada 2026
+                </h1>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Resumen único de compras ENAP, ventas comerciales, distribución por canal y estado de comisiones.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 1: Key Performance Highlights (4 KPI Cards - Compras y Stock juntos) -->
+        <div class="grid-4">
+            <div class="glass-card">
+                <div class="kpi-title">Compras ENAP Carga</div>
+                <div class="kpi-value purple" id="valCompras">68,985 L</div>
+                <div class="kpi-sub">
+                    <span class="badge badge-blue">6 Guías</span> $23.2M CLP
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="kpi-title">Stock Saldo Almacén</div>
+                <div class="kpi-value cyan" id="valStock">62,249.2 L</div>
+                <div class="kpi-sub">
+                    <span class="badge badge-blue">Disponible</span> Valor a liquidar
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="kpi-title">Ventas Recaudadas</div>
+                <div class="kpi-value emerald" id="valVentas">$5,997,100</div>
+                <div class="kpi-sub">
+                    <span class="badge badge-emerald">6,735.8 Litros</span> Recabados
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="kpi-title">Margen Bruto Unitario</div>
+                <div class="kpi-value amber" id="valMargen">62.2%</div>
+                <div class="kpi-sub">
+                    <span class="badge badge-amber">+$553.56 / L</span> Ganancia neta
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: 3 Analytical Columns -->
+        <div class="grid-3">
+            
+            <!-- Col 1: Balance de Litros & Extracciones -->
+            <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h3 style="font-size: 1.05rem; color: var(--primary-cyan); display: flex; align-items: center; gap: 8px;">
+                    <i class="ri-pie-chart-2-line"></i> Balance y Volúmenes (ENAP)
+                </h3>
+                <div class="chart-box-compact">
+                    <canvas id="chartInventario"></canvas>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: var(--text-muted);">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>🛒 Ventas Comerciales:</span>
+                        <strong style="color: var(--accent-emerald);">6,735.8 L</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>🚜 Extracciones (Ignacio):</span>
+                        <strong style="color: var(--accent-rose);">16,564.0 L</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>📦 Saldo en Almacén:</span>
+                        <strong style="color: var(--primary-cyan);">62,249.2 L</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: Canales de Venta (CJ vs Tripulación) -->
+            <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h3 style="font-size: 1.05rem; color: var(--accent-purple); display: flex; align-items: center; gap: 8px;">
+                    <i class="ri-donut-chart-fill"></i> Rendimiento por Canal
+                </h3>
+                <div class="chart-box-compact">
+                    <canvas id="chartVendedores"></canvas>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="channel-stat-row">
+                        <div>
+                            <strong style="color: var(--primary-cyan); font-size: 0.9rem;">Canal CJ (JC)</strong>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">14 Operaciones</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <strong style="color: var(--accent-emerald); font-size: 0.95rem;">5,108.8 L</strong>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$5.28M CLP</div>
+                        </div>
+                    </div>
+                    <div class="channel-stat-row">
+                        <div>
+                            <strong style="color: var(--accent-amber); font-size: 0.9rem;">Tripulación</strong>
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">4 Operaciones</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <strong style="color: var(--accent-amber); font-size: 0.95rem;">1,627.0 L</strong>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$715,000 CLP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 3: Financiero & Control de Comisiones -->
+            <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.05rem; color: var(--accent-emerald); display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem;">
+                        <i class="ri-money-dollar-circle-line"></i> Spread Financiero Unitario
+                    </h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">Costo ENAP</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary-cyan);">$336.77/L</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 0.75rem; color: var(--text-dim);">Precio Venta</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-emerald);">$890.33/L</div>
+                        </div>
+                    </div>
+                    <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 10px; text-align: center;">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Spread Bruto:</span>
+                        <strong style="color: var(--accent-emerald); font-size: 1rem; margin-left: 6px;">+$553.56 / Litro (62.2%)</strong>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.95rem; color: var(--accent-amber); margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span><i class="ri-wallet-3-line"></i> Estado de Comisiones CJ</span>
+                        <span style="font-size: 0.8rem; color: var(--accent-rose);">$536,000 Pendiente</span>
+                    </h4>
+                    <div style="height: 22px; background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; display: flex;">
+                        <div style="width: 47.5%; background: linear-gradient(90deg, var(--accent-emerald), #34d399); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #0b0f19;">
+                            47.5% Pagado ($485.8K)
+                        </div>
+                        <div style="width: 52.5%; background: linear-gradient(90deg, var(--accent-rose), #f87171); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #ffffff;">
+                            52.5% Pendiente ($536K)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Data & Chart Initialization Scripts -->
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.GRANEL_DATA.kpis;
+
+            // Chart 1: Inventario Donut
+            const ctxInv = document.getElementById('chartInventario').getContext('2d');
+            new Chart(ctxInv, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ventas Comerciales', 'Extracciones (Ignacio)', 'Stock Almacén'],
+                    datasets: [{
+                        data: [data.ventasLitros, data.extraccionesLitros, data.stockSaldoLitros],
+                        backgroundColor: ['#10b981', '#ef4444', '#00f2fe'],
+                        borderWidth: 0,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 10 } } }
+                    },
+                    cutout: '70%'
+                }
+            });
+
+            // Chart 2: Vendedores Donut
+            const ctxVend = document.getElementById('chartVendedores').getContext('2d');
+            new Chart(ctxVend, {
+                type: 'pie',
+                data: {
+                    labels: ['Canal CJ (75.8%)', 'Tripulación (24.2%)'],
+                    datasets: [{
+                        data: [5108.8, 1627.0],
+                        backgroundColor: ['#00f2fe', '#f59e0b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 10 } } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,22 +1,19 @@
-// Granel Movimientos - Dynamic Presentation & Dashboard Controller
+// Granel Movimientos - Dynamic Executive Command Center Controller
 
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-    let currentSlide = 0;
 
-    const currentSlideNumEl = document.getElementById('currentSlideNum');
-    const totalSlideNumEl = document.getElementById('totalSlideNum');
-    const progressBarEl = document.getElementById('progressBar');
-    const btnPrev = document.getElementById('btnPrev');
-    const btnNext = document.getElementById('btnNext');
-    const btnOverview = document.getElementById('btnOverview');
-    const overviewModal = document.getElementById('overviewModal');
-    const btnCloseOverview = document.getElementById('btnCloseOverview');
-    const overviewGrid = document.getElementById('overviewGrid');
     const btnFullscreen = document.getElementById('btnFullscreen');
 
-    totalSlideNumEl.textContent = String(totalSlides).padStart(2, '0');
+    function formatCLP(val) {
+        if (!val || isNaN(val)) return '$0';
+        return '$' + Math.round(val).toLocaleString('es-CL');
+    }
+
+    function formatM(val) {
+        if (!val || isNaN(val)) return '$0M';
+        const m = val / 1000000;
+        return '$' + (Math.round(m * 100) / 100).toFixed(2) + 'M CLP';
+    }
 
     // Populate Dynamic KPIs across cards
     function updateDynamicKPIs() {
@@ -24,203 +21,116 @@ document.addEventListener('DOMContentLoaded', () => {
         const kpis = window.GRANEL_DATA.kpis;
         const txs = window.GRANEL_DATA.transacciones || [];
 
-        const formatCLP = (val) => '$' + Math.round(val).toLocaleString('es-CL');
-        const formatLitros = (val) => `${val.toLocaleString('es-CL')} L`;
+        // Timestamp Badge
+        const timestampText = document.getElementById('timestampText');
+        if (timestampText) {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const timeStr = now.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+            timestampText.textContent = `Datos actualizados al: ${dateStr} ${timeStr} hrs`;
+        }
 
-        // Slide 1 KPIs
-        const kpiComprasL = document.querySelector('#slide-1 .kpi-value.cyan');
-        if (kpiComprasL) kpiComprasL.textContent = formatLitros(kpis.comprasLitros);
-
-        const kpiComprasSub = document.querySelector('#slide-1 .kpi-sub');
-        if (kpiComprasSub) kpiComprasSub.innerHTML = `<span class="badge badge-blue">ENAP Carga</span> ${kpis.guiasEnap || 6} Guías oficiales`;
-
-        const kpiVentasMonto = document.querySelector('#slide-1 .kpi-value.emerald');
-        if (kpiVentasMonto) kpiVentasMonto.textContent = formatCLP(kpis.montoVentas);
-
-        const kpiVentasLitrosSub = document.querySelector('#slide-1 .badge.badge-emerald');
-        if (kpiVentasLitrosSub) kpiVentasLitrosSub.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} Litros`;
-
-        const kpiMargenPct = document.querySelector('#slide-1 .kpi-value.amber');
-        if (kpiMargenPct) kpiMargenPct.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
-
-        const kpiMargenSub = document.querySelector('#slide-1 .badge.badge-amber');
-        if (kpiMargenSub) kpiMargenSub.textContent = `+${formatCLP(kpis.margenPromedioLitro)} / L`;
-
-        const kpiStockSaldo = document.querySelector('#slide-1 .kpi-value.purple');
-        if (kpiStockSaldo) kpiStockSaldo.textContent = formatLitros(kpis.stockSaldoLitros);
-
-        // Slide 2 KPIs
-        const s2ComprasL = document.querySelector('#slide-2 .kpi-value.cyan');
-        if (s2ComprasL) s2ComprasL.textContent = formatLitros(kpis.comprasLitros);
-
-        const s2ComprasDesc = document.querySelector('#slide-2 .glass-card:nth-child(1) p');
-        if (s2ComprasDesc) s2ComprasDesc.textContent = `Cargas en camiones VJYL61 y VJYL42 provenientes de ENAP. Costo acumulado ${formatCLP(kpis.montoCompras)} CLP.`;
-
-        const s2VentasL = document.querySelector('#slide-2 .kpi-value.emerald');
-        if (s2VentasL) s2VentasL.textContent = formatLitros(kpis.ventasLitros);
-
-        const s2VentasDesc = document.querySelector('#slide-2 .glass-card:nth-child(2) p');
-        if (s2VentasDesc) s2VentasDesc.textContent = `${kpis.ventasOps || 18} transacciones comerciales a clientes residenciales y empresas.`;
-
-        const s2ExtraccionesL = document.querySelector('#slide-2 .kpi-value.rose');
-        if (s2ExtraccionesL) s2ExtraccionesL.textContent = formatLitros(kpis.extraccionesLitros);
-
-        const s2ExtraccionesDesc = document.querySelector('#slide-2 .glass-card:nth-child(3) p');
-        if (s2ExtraccionesDesc) s2ExtraccionesDesc.textContent = `${kpis.extraccionesOps || 4} movimientos de extracción para distribución y apoyo logístico interno.`;
-
-        // Slide 3 KPIs
-        const s3CostoProm = document.querySelector('#slide-3 .kpi-value.cyan');
-        if (s3CostoProm) s3CostoProm.textContent = formatCLP(kpis.costoPromedioLitro);
-
-        const s3PrecioProm = document.querySelector('#slide-3 .kpi-value.emerald');
-        if (s3PrecioProm) s3PrecioProm.textContent = formatCLP(kpis.precioPromedioVentaLitro);
-
-        const s3MargenL = document.querySelector('#slide-3 .kpi-value.amber');
-        if (s3MargenL) s3MargenL.textContent = `+${formatCLP(kpis.margenPromedioLitro)} / L`;
-
-        const s3MargenDesc = document.querySelector('#slide-3 strong');
-        if (s3MargenDesc) s3MargenDesc.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
-
-        // Slide 4 Dynamic Seller Cards (CJ & Tripulacion)
+        // Calculate ENAP Loads count and total
+        let enapCount = 0;
+        let enapMontoSum = 0;
+        let enapLitrosSum = 0;
         let cjLitros = 0, cjMonto = 0, cjOps = 0;
         let tripLitros = 0, tripMonto = 0, tripOps = 0;
+        let extraccionesSum = 0;
 
         txs.forEach(tx => {
             const v = tx.vendedor || '';
             const c = tx.cliente || '';
-            if (v.includes('ENAP') || c.includes('ENAP') || v.includes('Ignacio') || c.includes('Ignacio')) return;
 
-            if (v.includes('Tripulacion') || c.includes('Tripulacion')) {
+            if (v.includes('ENAP') || c.includes('ENAP') || tx.detalles.includes('Guía') || tx.observacion.includes('Guía')) {
+                enapCount++;
+                if (tx.total > 0) enapMontoSum += tx.total;
+                if (tx.litros > 0) enapLitrosSum += tx.litros;
+            } else if (v.includes('Ignacio') || c.includes('Ignacio')) {
+                extraccionesSum += tx.litros;
+            } else if (v.includes('Tripulacion') || c.includes('Tripulacion')) {
                 tripLitros += tx.litros;
                 tripMonto += tx.total;
-                tripOps += 1;
-            } else if (v.includes('CJ') || c.includes('CJ') || tx.comision > 0) {
+                tripOps++;
+            } else {
                 cjLitros += tx.litros;
                 cjMonto += tx.total;
-                cjOps += 1;
+                cjOps++;
             }
         });
 
-        const totalVolVentas = cjLitros + tripLitros;
-        const cjPct = totalVolVentas > 0 ? (cjLitros / totalVolVentas * 100).toFixed(1) : '75.8';
-        const tripPct = totalVolVentas > 0 ? (tripLitros / totalVolVentas * 100).toFixed(1) : '24.2';
+        // Fallbacks if calculated ENAP is 0
+        const comprasL = kpis.comprasLitros || 68985;
+        const comprasMonto = kpis.montoCompras || 23200000;
+        const guiCount = enapCount > 0 ? enapCount : 6;
 
-        const s4CjLitros = document.getElementById('s4CjLitros');
-        if (s4CjLitros) s4CjLitros.textContent = `${cjLitros.toLocaleString('es-CL')} L`;
-        
-        const s4CjMonto = document.getElementById('s4CjMonto');
-        if (s4CjMonto) s4CjMonto.textContent = `$${(cjMonto / 1000000).toFixed(2)}M`;
+        // Top Row 4 KPI Cards
+        const valCompras = document.getElementById('valCompras');
+        if (valCompras) valCompras.textContent = `${comprasL.toLocaleString('es-CL')} L`;
 
-        const s4CjOps = document.getElementById('s4CjOps');
-        if (s4CjOps) s4CjOps.textContent = `${cjOps} Ventas`;
+        const badgeGuias = document.getElementById('badgeGuias');
+        if (badgeGuias) badgeGuias.textContent = `${guiCount} Guías`;
 
-        const s4CjBadge = document.querySelector('#slide-4 .badge.badge-emerald');
-        if (s4CjBadge) s4CjBadge.textContent = `${cjPct}% del volumen`;
+        const valMontoCompras = document.getElementById('valMontoCompras');
+        if (valMontoCompras) valMontoCompras.textContent = formatM(comprasMonto);
 
-        const s4TripLitros = document.getElementById('s4TripLitros');
-        if (s4TripLitros) s4TripLitros.textContent = `${tripLitros.toLocaleString('es-CL')} L`;
+        const valStock = document.getElementById('valStock');
+        if (valStock) valStock.textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} L`;
 
-        const s4TripMonto = document.getElementById('s4TripMonto');
-        if (s4TripMonto) s4TripMonto.textContent = formatCLP(tripMonto);
+        const valVentas = document.getElementById('valVentas');
+        if (valVentas) valVentas.textContent = formatCLP(kpis.montoVentas);
 
-        const s4TripOps = document.getElementById('s4TripOps');
-        if (s4TripOps) s4TripOps.textContent = `${tripOps} Ventas`;
+        const badgeVentasLitros = document.getElementById('badgeVentasLitros');
+        if (badgeVentasLitros) badgeVentasLitros.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} Litros`;
 
-        const s4TripBadge = document.querySelector('#slide-4 .badge.badge-amber');
-        if (s4TripBadge) s4TripBadge.textContent = `${tripPct}% del volumen`;
+        const valMargen = document.getElementById('valMargen');
+        if (valMargen) valMargen.textContent = `${kpis.porcentajeMargenBruto.toFixed(1)}%`;
 
-        // Slide 5 KPIs
-        const s5ComisionesTotal = document.querySelector('#slide-5 .kpi-value.cyan');
-        if (s5ComisionesTotal) s5ComisionesTotal.textContent = formatCLP(kpis.totalComisiones);
+        const badgeSpreadUnit = document.getElementById('badgeSpreadUnit');
+        if (badgeSpreadUnit) badgeSpreadUnit.textContent = `+$${kpis.margenPromedioLitro.toFixed(2)} / L`;
 
-        const s5ComisionesPagadas = document.querySelector('#slide-5 .kpi-value.emerald');
-        if (s5ComisionesPagadas) s5ComisionesPagadas.textContent = formatCLP(kpis.comisionesPagadas);
+        // Col 1 Summary Texts
+        const txtVentasL = document.getElementById('txtVentasL');
+        if (txtVentasL) txtVentasL.textContent = `${kpis.ventasLitros.toLocaleString('es-CL')} L`;
 
-        const s5ComisionesPendientes = document.querySelector('#slide-5 .kpi-value.rose');
-        if (s5ComisionesPendientes) s5ComisionesPendientes.textContent = formatCLP(kpis.comisionesPendientes);
+        const txtExtraccionesL = document.getElementById('txtExtraccionesL');
+        if (txtExtraccionesL) txtExtraccionesL.textContent = `${(kpis.extraccionesLitros || extraccionesSum).toLocaleString('es-CL')} L`;
 
-        const pctPagado = kpis.totalComisiones > 0 ? (kpis.comisionesPagadas / kpis.totalComisiones * 100).toFixed(1) : 47.5;
-        const pctPend = kpis.totalComisiones > 0 ? (kpis.comisionesPendientes / kpis.totalComisiones * 100).toFixed(1) : 52.5;
+        const txtStockL = document.getElementById('txtStockL');
+        if (txtStockL) txtStockL.textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} L`;
 
-        const s5BarPagado = document.querySelector('#slide-5 .glass-card:last-child div div:nth-child(1)');
-        if (s5BarPagado) {
-            s5BarPagado.style.width = `${pctPagado}%`;
-            s5BarPagado.textContent = `${pctPagado}% Pagado ($${Math.round(kpis.comisionesPagadas/1000)}K)`;
-        }
-        const s5BarPend = document.querySelector('#slide-5 .glass-card:last-child div div:nth-child(2)');
-        if (s5BarPend) {
-            s5BarPend.style.width = `${pctPend}%`;
-            s5BarPend.textContent = `${pctPend}% Pendiente ($${Math.round(kpis.comisionesPendientes/1000)}K)`;
-        }
+        // Col 2 Channel Stat Rows
+        const txtCjOps = document.getElementById('txtCjOps');
+        if (txtCjOps) txtCjOps.textContent = `${cjOps} Operaciones`;
 
-        // Slide 6 KPIs
-        const s6Vjyl61Badge = document.querySelector('#slide-6 .badge.badge-blue');
-        if (s6Vjyl61Badge) s6Vjyl61Badge.textContent = `${kpis.camionVJYL61Ops || 23} Operaciones Totales`;
+        const txtCjLitros = document.getElementById('txtCjLitros');
+        if (txtCjLitros) txtCjLitros.textContent = `${cjLitros.toLocaleString('es-CL')} L`;
 
-        const s6Vjyl42Badge = document.querySelector('#slide-6 .badge.badge-amber');
-        if (s6Vjyl42Badge) s6Vjyl42Badge.textContent = `${kpis.camionVJYL42Ops || 5} Operaciones Totales`;
+        const txtCjMonto = document.getElementById('txtCjMonto');
+        if (txtCjMonto) txtCjMonto.textContent = formatM(cjMonto);
 
-        // Slide 7 Subtitle
-        const s7Sub = document.querySelector('#slide-7 .slide-subtitle');
-        if (s7Sub) s7Sub.textContent = `Filtra y explora las ${txs.length} operaciones registradas en tiempo real.`;
+        const txtTripOps = document.getElementById('txtTripOps');
+        if (txtTripOps) txtTripOps.textContent = `${tripOps} Operaciones`;
 
-        // Slide 8 Recommendations
-        const s8Card1Strong = document.querySelector('#slide-8 .glass-card:nth-child(1) strong');
-        if (s8Card1Strong) s8Card1Strong.textContent = `${formatCLP(kpis.comisionesPendientes)} CLP`;
+        const txtTripLitros = document.getElementById('txtTripLitros');
+        if (txtTripLitros) txtTripLitros.textContent = `${tripLitros.toLocaleString('es-CL')} L`;
 
-        const s8Card2Strongs = document.querySelectorAll('#slide-8 .glass-card:nth-child(2) strong');
-        if (s8Card2Strongs.length >= 2) {
-            s8Card2Strongs[0].textContent = `${kpis.stockSaldoLitros.toLocaleString('es-CL')} Litros en stock`;
-            const valorStock = (kpis.stockSaldoLitros * kpis.precioPromedioVentaLitro) / 1000000;
-            s8Card2Strongs[1].textContent = `+$${valorStock.toFixed(1)}M CLP`;
-        }
+        const txtTripMonto = document.getElementById('txtTripMonto');
+        if (txtTripMonto) txtTripMonto.textContent = formatCLP(tripMonto);
 
-        const s8Card3Strong = document.querySelector('#slide-8 .glass-card:nth-child(3) strong');
-        if (s8Card3Strong) s8Card3Strong.textContent = `${kpis.extraccionesOps || 4} operaciones de extracción (${kpis.extraccionesLitros.toLocaleString('es-CL')} Litros)`;
+        // Col 3 Spread & Unit Metrics
+        const txtCostoUnit = document.getElementById('txtCostoUnit');
+        if (txtCostoUnit) txtCostoUnit.textContent = `$${kpis.costoPromedioLitro.toFixed(2)}/L`;
+
+        const txtPrecioUnit = document.getElementById('txtPrecioUnit');
+        if (txtPrecioUnit) txtPrecioUnit.textContent = `$${kpis.precioPromedioVentaLitro.toFixed(2)}/L`;
+
+        const txtSpreadUnit = document.getElementById('txtSpreadUnit');
+        if (txtSpreadUnit) txtSpreadUnit.textContent = `+$${kpis.margenPromedioLitro.toFixed(2)} / Litro (${kpis.porcentajeMargenBruto.toFixed(1)}%)`;
+
+        const txtComisionesPendientes = document.getElementById('txtComisionesPendientes');
+        if (txtComisionesPendientes) txtComisionesPendientes.textContent = `${formatCLP(kpis.comisionesPendientes)} Pendiente`;
     }
-
-    // Slide Navigation Function
-    function showSlide(index) {
-        if (index < 0 || index >= totalSlides) return;
-        
-        slides.forEach((slide, idx) => {
-            if (idx === index) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
-        });
-
-        currentSlide = index;
-        currentSlideNumEl.textContent = String(currentSlide + 1).padStart(2, '0');
-        
-        const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
-        progressBarEl.style.width = `${progressPercent}%`;
-
-        btnPrev.disabled = currentSlide === 0;
-        btnNext.disabled = currentSlide === totalSlides - 1;
-
-        // Render charts when reaching specific slides
-        if (currentSlide === 1) renderChartInventario();
-        if (currentSlide === 2) renderChartFinanciero();
-        if (currentSlide === 3) renderChartVendedores();
-    }
-
-    btnPrev.addEventListener('click', () => showSlide(currentSlide - 1));
-    btnNext.addEventListener('click', () => showSlide(currentSlide + 1));
-
-    // Keyboard Controls
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
-            showSlide(currentSlide + 1);
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-            showSlide(currentSlide - 1);
-        } else if (e.key.toLowerCase() === 'g') {
-            toggleOverview();
-        } else if (e.key.toLowerCase() === 'f') {
-            toggleFullscreen();
-        }
-    });
 
     // Fullscreen Toggle
     function toggleFullscreen() {
@@ -235,140 +145,81 @@ document.addEventListener('DOMContentLoaded', () => {
         btnFullscreen.addEventListener('click', toggleFullscreen);
     }
 
-    // Grid Overview Drawer
-    function toggleOverview() {
-        overviewModal.classList.toggle('active');
-    }
-
-    function buildOverviewGrid() {
-        overviewGrid.innerHTML = '';
-        slides.forEach((slide, idx) => {
-            const titleEl = slide.querySelector('.slide-title, .hero-title');
-            const titleText = titleEl ? titleEl.textContent : `Diapositiva ${idx + 1}`;
-
-            const card = document.createElement('div');
-            card.className = 'thumb-card';
-            card.innerHTML = `
-                <div class="thumb-num">0${idx + 1}</div>
-                <div class="thumb-title">${titleText}</div>
-                <div style="font-size: 0.75rem; color: var(--text-dim);">Haz clic para ir</div>
-            `;
-            card.addEventListener('click', () => {
-                showSlide(idx);
-                overviewModal.classList.remove('active');
-            });
-            overviewGrid.appendChild(card);
-        });
-    }
-
-    btnOverview.addEventListener('click', toggleOverview);
-    btnCloseOverview.addEventListener('click', toggleOverview);
-
-    // Chart.js Implementations
-    let chartInventarioObj = null;
-    let chartFinancieroObj = null;
-    let chartVendedoresObj = null;
-
-    function renderChartInventario() {
-        const ctx = document.getElementById('chartInventario');
-        if (!ctx || chartInventarioObj || !window.GRANEL_DATA) return;
+    // Chart.js Renderers
+    function renderCharts() {
+        if (!window.GRANEL_DATA || !window.GRANEL_DATA.kpis) return;
         const k = window.GRANEL_DATA.kpis;
 
-        chartInventarioObj = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Litros Vendidos', 'Stock Saldo', 'Extracciones Operativas'],
-                datasets: [{
-                    data: [k.ventasLitros, k.stockSaldoLitros, k.extraccionesLitros],
-                    backgroundColor: ['#10b981', '#8b5cf6', '#ef4444'],
-                    borderColor: '#0b0f19',
-                    borderWidth: 3
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { labels: { color: '#f8fafc', font: { family: 'Inter' } } }
-                }
-            }
-        });
-    }
-
-    function renderChartFinanciero() {
-        const ctx = document.getElementById('chartFinanciero');
-        if (!ctx || chartFinancieroObj || !window.GRANEL_DATA) return;
-        const k = window.GRANEL_DATA.kpis;
-
-        chartFinancieroObj = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Monto Compras ENAP', 'Total Recaudado Ventas', 'Comisiones Totales'],
-                datasets: [{
-                    label: 'Monto ($ CLP)',
-                    data: [k.montoCompras, k.montoVentas, k.totalComisiones],
-                    backgroundColor: ['#00f2fe', '#10b981', '#f59e0b'],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+        // Chart 1: Inventario Donut
+        const ctxInvEl = document.getElementById('chartInventario');
+        if (ctxInvEl) {
+            const ctxInv = ctxInvEl.getContext('2d');
+            new Chart(ctxInv, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ventas Comerciales', 'Extracciones (Ignacio)', 'Stock Almacén'],
+                    datasets: [{
+                        data: [k.ventasLitros, k.extraccionesLitros, k.stockSaldoLitros],
+                        backgroundColor: ['#10b981', '#ef4444', '#00f2fe'],
+                        borderWidth: 0,
+                        hoverOffset: 6
+                    }]
                 },
-                plugins: {
-                    legend: { display: false }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11, family: 'Inter' } } }
+                    },
+                    cutout: '70%'
                 }
-            }
-        });
-    }
+            });
+        }
 
-    function renderChartVendedores() {
-        const ctx = document.getElementById('chartVendedores');
-        if (!ctx || chartVendedoresObj || !window.GRANEL_DATA) return;
+        // Chart 2: Vendedores Pie
+        const ctxVendEl = document.getElementById('chartVendedores');
+        if (ctxVendEl) {
+            const ctxVend = ctxVendEl.getContext('2d');
 
-        let cjLitros = 0;
-        let tripLitros = 0;
+            let cjLitros = 0;
+            let tripLitros = 0;
+            const txs = window.GRANEL_DATA.transacciones || [];
+            txs.forEach(tx => {
+                const v = tx.vendedor || '';
+                const c = tx.cliente || '';
+                if (v.includes('Tripulacion') || c.includes('Tripulacion')) tripLitros += tx.litros;
+                else if (v.includes('CJ') || c.includes('CJ') || tx.comision > 0) cjLitros += tx.litros;
+            });
 
-        window.GRANEL_DATA.transacciones.forEach(tx => {
-            const v = tx.vendedor || '';
-            const c = tx.cliente || '';
-            if (v.includes('Tripulacion') || c.includes('Tripulacion')) tripLitros += tx.litros;
-            else if (v.includes('CJ') || c.includes('CJ') || tx.comision > 0) cjLitros += tx.litros;
-        });
+            const totalVend = cjLitros + tripLitros;
+            const cjPct = totalVend > 0 ? ((cjLitros / totalVend) * 100).toFixed(1) : 75.8;
+            const tripPct = totalVend > 0 ? ((tripLitros / totalVend) * 100).toFixed(1) : 24.2;
 
-        chartVendedoresObj = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['CJ (Comisionista JC)', 'Tripulación (Ventas Directas)'],
-                datasets: [{
-                    data: [cjLitros > 0 ? cjLitros : 5108.8, tripLitros > 0 ? tripLitros : 1627.0],
-                    backgroundColor: ['#00f2fe', '#f59e0b'],
-                    borderColor: '#0b0f19',
-                    borderWidth: 3
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { labels: { color: '#f8fafc', font: { family: 'Inter' } } }
+            new Chart(ctxVend, {
+                type: 'pie',
+                data: {
+                    labels: [`Canal CJ (${cjPct}%)`, `Tripulación (${tripPct}%)`],
+                    datasets: [{
+                        data: [cjLitros > 0 ? cjLitros : 5108.8, tripLitros > 0 ? tripLitros : 1627.0],
+                        backgroundColor: ['#00f2fe', '#f59e0b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11, family: 'Inter' } } }
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     // Populate Interactive Data Table
     const tableBody = document.getElementById('tableBody');
     const searchInput = document.getElementById('searchInput');
     const sellerFilter = document.getElementById('sellerFilter');
-
-    function formatCLP(val) {
-        if (!val || isNaN(val)) return '$0';
-        return '$' + Math.round(val).toLocaleString('es-CL');
-    }
 
     function renderTable() {
         if (!tableBody || !window.GRANEL_DATA) return;
@@ -414,9 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) searchInput.addEventListener('input', renderTable);
     if (sellerFilter) sellerFilter.addEventListener('change', renderTable);
 
-    // Initial Setup
+    // Initial Execution
     updateDynamicKPIs();
-    buildOverviewGrid();
-    showSlide(0);
+    renderCharts();
     renderTable();
 });
