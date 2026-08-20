@@ -1,23 +1,23 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-20 13:01:53)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-20 13:13:52)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 68985.0,
-        ventasLitros: 6735.8,
-        stockSaldoLitros: 62249.2,
+        ventasLitros: 7629.8,
+        stockSaldoLitros: 61355.2,
         extraccionesLitros: 16564.0,
         montoCompras: 23231995.0,
-        montoVentas: 5997100.0,
+        montoVentas: 6951100.0,
         guiasEnap: 6,
-        ventasOps: 18,
+        ventasOps: 21,
         extraccionesOps: 4,
         comisionesPagadas: 485760.0,
-        comisionesPendientes: 536000.0,
-        totalComisiones: 1021760.0,
+        comisionesPendientes: 694800.0,
+        totalComisiones: 1180560.0,
         costoPromedioLitro: 336.77,
-        precioPromedioVentaLitro: 890.33,
-        margenPromedioLitro: 553.56,
-        porcentajeMargenBruto: 62.2,
-        camionVJYL61Ops: 23,
+        precioPromedioVentaLitro: 911.05,
+        margenPromedioLitro: 574.28,
+        porcentajeMargenBruto: 63.0,
+        camionVJYL61Ops: 26,
         camionVJYL42Ops: 5
     },
     transacciones: [
@@ -411,6 +411,48 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2358522",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-20",
+        "cliente": "Bar Barrio Alto",
+        "camion": "VJYL61",
+        "vendedor": "CJ",
+        "direccion": "El Peñón 335 Puente Alto",
+        "precio": 1000.0,
+        "litros": 294.0,
+        "total": 294000.0,
+        "medioPago": "Transferencia dos",
+        "comision": 58800.0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-20",
+        "cliente": "BAR Tirua",
+        "camion": "VJYL61",
+        "vendedor": "CJ",
+        "direccion": "Pirque",
+        "precio": 1100.0,
+        "litros": 500.0,
+        "total": 550000.0,
+        "medioPago": "Pendiente de pago",
+        "comision": 100000.0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-20",
+        "cliente": "Brasas y Sabor SpA",
+        "camion": "VJYL61",
+        "vendedor": "Tripulacion",
+        "direccion": "Puente Alto",
+        "precio": 1100.0,
+        "litros": 100.0,
+        "total": 110000.0,
+        "medioPago": "Transferencia",
+        "comision": 0.0,
+        "observacion": "",
         "detalles": ""
     }
 ]
