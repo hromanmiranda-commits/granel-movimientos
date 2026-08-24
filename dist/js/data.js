@@ -1,22 +1,22 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-24 17:39:30)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-24 17:43:51)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 0.0,
-        ventasLitros: 3796.8,
-        stockSaldoLitros: -3796.8,
-        extraccionesLitros: 9017.0,
+        ventasLitros: 9198.8,
+        stockSaldoLitros: -9198.8,
+        extraccionesLitros: 0.0,
         montoCompras: 0.0,
-        montoVentas: 2665204.0,
+        montoVentas: 2921765.0,
         guiasEnap: 6,
-        ventasOps: 10,
-        extraccionesOps: 17,
+        ventasOps: 23,
+        extraccionesOps: 4,
         comisionesPagadas: 0.0,
-        comisionesPendientes: 2884800.0,
-        totalComisiones: 2884800.0,
+        comisionesPendientes: 0.0,
+        totalComisiones: 0.0,
         costoPromedioLitro: 336.77,
-        precioPromedioVentaLitro: 701.96,
-        margenPromedioLitro: 365.19,
-        porcentajeMargenBruto: 52.0,
+        precioPromedioVentaLitro: 317.62,
+        margenPromedioLitro: -19.15,
+        porcentajeMargenBruto: -6.0,
         camionVJYL61Ops: 28,
         camionVJYL42Ops: 5
     },
@@ -59,7 +59,7 @@ window.GRANEL_DATA = {
         "litros": 179.2,
         "total": 179200.0,
         "medioPago": "N/A",
-        "comision": 179200.0,
+        "comision": 0.0,
         "observacion": "Tarjeta",
         "detalles": ""
     },
@@ -73,7 +73,7 @@ window.GRANEL_DATA = {
         "litros": 518.1,
         "total": 518100.0,
         "medioPago": "N/A",
-        "comision": 518100.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -87,7 +87,7 @@ window.GRANEL_DATA = {
         "litros": 488.2,
         "total": 488200.0,
         "medioPago": "N/A",
-        "comision": 488200.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -101,7 +101,7 @@ window.GRANEL_DATA = {
         "litros": 500.3,
         "total": 500300.0,
         "medioPago": "N/A",
-        "comision": 500300.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -115,7 +115,7 @@ window.GRANEL_DATA = {
         "litros": 237.9,
         "total": 237900.0,
         "medioPago": "N/A",
-        "comision": 237900.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -129,7 +129,7 @@ window.GRANEL_DATA = {
         "litros": 205.1,
         "total": 205100.0,
         "medioPago": "N/A",
-        "comision": 205100.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -143,7 +143,7 @@ window.GRANEL_DATA = {
         "litros": 300.0,
         "total": 300000.0,
         "medioPago": "N/A",
-        "comision": 300000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -157,7 +157,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 200000.0,
         "medioPago": "N/A",
-        "comision": 200000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -185,7 +185,7 @@ window.GRANEL_DATA = {
         "litros": 747.0,
         "total": 14535.0,
         "medioPago": "N/A",
-        "comision": 747000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -199,7 +199,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 14735.0,
         "medioPago": "N/A",
-        "comision": 220000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -213,7 +213,7 @@ window.GRANEL_DATA = {
         "litros": 350.0,
         "total": 16490.0,
         "medioPago": "N/A",
-        "comision": 385000.0,
+        "comision": 0.0,
         "observacion": "Transferencia en dos",
         "detalles": ""
     },
@@ -241,7 +241,7 @@ window.GRANEL_DATA = {
         "litros": 270.0,
         "total": 16760.0,
         "medioPago": "N/A",
-        "comision": 297000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -255,7 +255,7 @@ window.GRANEL_DATA = {
         "litros": 350.0,
         "total": 17110.0,
         "medioPago": "N/A",
-        "comision": 350000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -269,7 +269,7 @@ window.GRANEL_DATA = {
         "litros": 109.0,
         "total": 17219.0,
         "medioPago": "N/A",
-        "comision": 109000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -297,7 +297,7 @@ window.GRANEL_DATA = {
         "litros": 404.0,
         "total": 19834.0,
         "medioPago": "N/A",
-        "comision": 444400.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -311,7 +311,7 @@ window.GRANEL_DATA = {
         "litros": 509.0,
         "total": 20343.0,
         "medioPago": "N/A",
-        "comision": 559900.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -367,7 +367,7 @@ window.GRANEL_DATA = {
         "litros": 256.0,
         "total": 22615.0,
         "medioPago": "N/A",
-        "comision": 256000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -423,7 +423,7 @@ window.GRANEL_DATA = {
         "litros": 294.0,
         "total": 22909.0,
         "medioPago": "N/A",
-        "comision": 294000.0,
+        "comision": 0.0,
         "observacion": "Transferencia dos",
         "detalles": ""
     },
@@ -437,7 +437,7 @@ window.GRANEL_DATA = {
         "litros": 500.0,
         "total": 23409.0,
         "medioPago": "N/A",
-        "comision": 550000.0,
+        "comision": 0.0,
         "observacion": "Pendiente de pago",
         "detalles": ""
     },
@@ -451,7 +451,7 @@ window.GRANEL_DATA = {
         "litros": 100.0,
         "total": 23509.0,
         "medioPago": "N/A",
-        "comision": 110000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     },
@@ -479,7 +479,7 @@ window.GRANEL_DATA = {
         "litros": 449.0,
         "total": 25078.0,
         "medioPago": "N/A",
-        "comision": 449000.0,
+        "comision": 0.0,
         "observacion": "Transferencia",
         "detalles": ""
     }
