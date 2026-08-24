@@ -1,12 +1,12 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-24 17:43:51)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-24 17:47:53)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 0.0,
+        comprasLitros: 68985.0,
         ventasLitros: 9198.8,
-        stockSaldoLitros: -9198.8,
-        extraccionesLitros: 0.0,
-        montoCompras: 0.0,
-        montoVentas: 2921765.0,
+        stockSaldoLitros: 59786.2,
+        extraccionesLitros: 16564.0,
+        montoCompras: 23231995.0,
+        montoVentas: 7400100.0,
         guiasEnap: 6,
         ventasOps: 23,
         extraccionesOps: 4,
@@ -14,9 +14,9 @@ window.GRANEL_DATA = {
         comisionesPendientes: 0.0,
         totalComisiones: 0.0,
         costoPromedioLitro: 336.77,
-        precioPromedioVentaLitro: 317.62,
-        margenPromedioLitro: -19.15,
-        porcentajeMargenBruto: -6.0,
+        precioPromedioVentaLitro: 804.46,
+        margenPromedioLitro: 467.69,
+        porcentajeMargenBruto: 58.1,
         camionVJYL61Ops: 28,
         camionVJYL42Ops: 5
     },
@@ -28,12 +28,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11481.0,
+        "total": 3836889.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3836889"
+        "observacion": "Guía N° xxxxx",
+        "detalles": ""
     },
     {
         "fecha": "2026-07-27",
@@ -42,9 +42,9 @@ window.GRANEL_DATA = {
         "vendedor": "Ignacio",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
+        "litros": 1403.0,
         "total": 0.0,
-        "medioPago": "1403",
+        "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
         "detalles": ""
@@ -58,9 +58,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 179.2,
         "total": 179200.0,
-        "medioPago": "N/A",
+        "medioPago": "Tarjeta",
         "comision": 0.0,
-        "observacion": "Tarjeta",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -72,9 +72,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 518.1,
         "total": 518100.0,
-        "medioPago": "N/A",
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -86,9 +86,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 488.2,
         "total": 488200.0,
-        "medioPago": "N/A",
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -100,9 +100,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 500.3,
         "total": 500300.0,
-        "medioPago": "N/A",
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -114,9 +114,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 237.9,
         "total": 237900.0,
-        "medioPago": "N/A",
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -128,9 +128,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 205.1,
         "total": 205100.0,
-        "medioPago": "N/A",
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -142,9 +142,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 300.0,
         "total": 300000.0,
-        "medioPago": "N/A",
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "Comision Pagada",
         "detalles": ""
     },
     {
@@ -156,9 +156,9 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 200.0,
         "total": 200000.0,
-        "medioPago": "N/A",
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -169,7 +169,7 @@ window.GRANEL_DATA = {
         "direccion": "Santa Rita 1177 parcela 14 Pirque",
         "precio": 0.0,
         "litros": 912.0,
-        "total": 13789.0,
+        "total": 0.0,
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
@@ -183,11 +183,11 @@ window.GRANEL_DATA = {
         "direccion": "Camino el Chalaco 66B",
         "precio": 1000.0,
         "litros": 747.0,
-        "total": 14535.0,
-        "medioPago": "N/A",
+        "total": 747000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "Factura",
+        "detalles": "Ebal spa - RUT: 77.625.623-4 - Av Gabriela 3264 La Pintana - Giro Construccion"
     },
     {
         "fecha": "2026-08-03",
@@ -197,10 +197,10 @@ window.GRANEL_DATA = {
         "direccion": "Avenida Virginia subercaseaux 4175 (parcela 15)",
         "precio": 1100.0,
         "litros": 200.0,
-        "total": 14735.0,
-        "medioPago": "N/A",
+        "total": 220000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -211,10 +211,10 @@ window.GRANEL_DATA = {
         "direccion": "Camino de las flores 1262 Pirque",
         "precio": 1100.0,
         "litros": 350.0,
-        "total": 16490.0,
-        "medioPago": "N/A",
+        "total": 385000.0,
+        "medioPago": "Transferencia en dos",
         "comision": 0.0,
-        "observacion": "Transferencia en dos",
+        "observacion": "Quedó saldo de $35 mil para mañana",
         "detalles": ""
     },
     {
@@ -224,9 +224,9 @@ window.GRANEL_DATA = {
         "vendedor": "Ignacio",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
+        "litros": 1403.0,
         "total": 0.0,
-        "medioPago": "1403",
+        "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
         "detalles": ""
@@ -239,11 +239,11 @@ window.GRANEL_DATA = {
         "direccion": "Brisas del raco parcela 36 Pirque",
         "precio": 1100.0,
         "litros": 270.0,
-        "total": 16760.0,
-        "medioPago": "N/A",
+        "total": 297000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "Factura",
+        "detalles": "Residencia Adulto Mayor Amor Eterno SpA - Rut 76.699.397-4 - Los Almendros Parcela2B Pirque"
     },
     {
         "fecha": "2026-08-07",
@@ -253,11 +253,11 @@ window.GRANEL_DATA = {
         "direccion": "JP Alesaandri 114 Nuñoa",
         "precio": 1000.0,
         "litros": 350.0,
-        "total": 17110.0,
-        "medioPago": "N/A",
+        "total": 350000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "Factura",
+        "detalles": "Gastronomica Exquisite SpA - Rut: 77.714.318-2 - JP alessandri 114 Nuñoa"
     },
     {
         "fecha": "2026-08-07",
@@ -267,10 +267,10 @@ window.GRANEL_DATA = {
         "direccion": "Av los carreras 706B, plaza de los porotos",
         "precio": 1000.0,
         "litros": 109.0,
-        "total": 17219.0,
-        "medioPago": "N/A",
+        "total": 109000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -280,9 +280,9 @@ window.GRANEL_DATA = {
         "vendedor": "Ignacio",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
+        "litros": 2219.0,
         "total": 0.0,
-        "medioPago": "2219",
+        "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
         "detalles": ""
@@ -295,10 +295,10 @@ window.GRANEL_DATA = {
         "direccion": "Camino rinconada san Vicente parcela 38",
         "precio": 1100.0,
         "litros": 404.0,
-        "total": 19834.0,
-        "medioPago": "N/A",
+        "total": 444400.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -309,10 +309,10 @@ window.GRANEL_DATA = {
         "direccion": "Condominio majadas C parcela 5",
         "precio": 1100.0,
         "litros": 509.0,
-        "total": 20343.0,
-        "medioPago": "N/A",
+        "total": 559900.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -322,12 +322,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11617.0,
+        "total": 3882182.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3882182"
+        "observacion": "Guía N° 2356186",
+        "detalles": ""
     },
     {
         "fecha": "2026-08-13",
@@ -336,9 +336,9 @@ window.GRANEL_DATA = {
         "vendedor": "Ignacio",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
+        "litros": 11539.0,
         "total": 0.0,
-        "medioPago": "11539",
+        "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
         "detalles": ""
@@ -350,12 +350,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11481.0,
+        "total": 3836889.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3836889"
+        "observacion": "Guía N° 2356453",
+        "detalles": ""
     },
     {
         "fecha": "2026-08-13",
@@ -365,11 +365,11 @@ window.GRANEL_DATA = {
         "direccion": "PRIMERA TRANSVERSAL 828 PADRE HURTADO",
         "precio": 1000.0,
         "litros": 256.0,
-        "total": 22615.0,
-        "medioPago": "N/A",
+        "total": 256000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "",
+        "detalles": "MISTER GUSS SPA - RUT 78.060.801-3 - PRIMERA TRANSVERSAL 828 PADRE HURTADO - RESTOBAR"
     },
     {
         "fecha": "2026-08-14",
@@ -378,12 +378,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11656.0,
+        "total": 3955528.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3955528"
+        "observacion": "Guía N° 2356889",
+        "detalles": ""
     },
     {
         "fecha": "2026-08-18",
@@ -392,12 +392,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11462.0,
+        "total": 3889821.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3889821"
+        "observacion": "Guía N° 2358078",
+        "detalles": ""
     },
     {
         "fecha": "2026-08-19",
@@ -406,12 +406,12 @@ window.GRANEL_DATA = {
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
-        "litros": 0.0,
-        "total": 0.0,
-        "medioPago": "N/A",
+        "litros": 11288.0,
+        "total": 3830686.0,
+        "medioPago": "ENAP carga",
         "comision": 0.0,
-        "observacion": "ENAP carga",
-        "detalles": "3830686"
+        "observacion": "Guía N° 2358522",
+        "detalles": ""
     },
     {
         "fecha": "2026-08-20",
@@ -421,11 +421,11 @@ window.GRANEL_DATA = {
         "direccion": "El Peñón 335 Puente Alto",
         "precio": 1000.0,
         "litros": 294.0,
-        "total": 22909.0,
-        "medioPago": "N/A",
+        "total": 294000.0,
+        "medioPago": "Transferencia dos",
         "comision": 0.0,
-        "observacion": "Transferencia dos",
-        "detalles": ""
+        "observacion": "",
+        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     },
     {
         "fecha": "2026-08-20",
@@ -435,10 +435,10 @@ window.GRANEL_DATA = {
         "direccion": "Pirque",
         "precio": 1100.0,
         "litros": 500.0,
-        "total": 23409.0,
-        "medioPago": "N/A",
+        "total": 550000.0,
+        "medioPago": "Pendiente de pago",
         "comision": 0.0,
-        "observacion": "Pendiente de pago",
+        "observacion": "",
         "detalles": ""
     },
     {
@@ -449,11 +449,11 @@ window.GRANEL_DATA = {
         "direccion": "Puente Alto",
         "precio": 1100.0,
         "litros": 100.0,
-        "total": 23509.0,
-        "medioPago": "N/A",
+        "total": 110000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "",
+        "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 -"
     },
     {
         "fecha": "2026-08-24",
@@ -463,7 +463,7 @@ window.GRANEL_DATA = {
         "direccion": "Santa Rita 1177 parcela 14 Pirque",
         "precio": 0.0,
         "litros": 1120.0,
-        "total": 24630.0,
+        "total": 0.0,
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
@@ -477,11 +477,11 @@ window.GRANEL_DATA = {
         "direccion": "El Peñón 335 Puente Alto",
         "precio": 1000.0,
         "litros": 449.0,
-        "total": 25078.0,
-        "medioPago": "N/A",
+        "total": 449000.0,
+        "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "Transferencia",
-        "detalles": ""
+        "observacion": "",
+        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     }
 ]
 };

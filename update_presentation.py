@@ -51,17 +51,17 @@ for row in rows[4:]:
     direccion = str(row[6]).strip() if len(row) > 6 and row[6] not in (None, 0, '') else 'N/A'
     precio = float(row[7]) if len(row) > 7 and isinstance(row[7], (int, float)) else 0.0
     litros = float(row[8]) if len(row) > 8 and isinstance(row[8], (int, float)) else 0.0
-    extraccion = float(row[9]) if len(row) > 9 and isinstance(row[9], (int, float)) else 0.0
-    total = float(row[10]) if len(row) > 10 and isinstance(row[10], (int, float)) else 0.0
+    extraccion = float(row[11]) if len(row) > 11 and isinstance(row[11], (int, float)) else 0.0
+    total = float(row[12]) if len(row) > 12 and isinstance(row[12], (int, float)) else 0.0
     if total == 0 and precio > 0 and litros > 0:
         total = precio * litros
 
-    medioPago = str(row[11]).strip() if len(row) > 11 and row[11] not in (None, 0, '') else 'N/A'
-    comision = float(row[12]) if len(row) > 12 and isinstance(row[12], (int, float)) else 0.0
-    observacion = str(row[13]).strip() if len(row) > 13 and row[13] not in (None, 0, '') else ''
-    compra_monto = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0.0
-    compra_litros = float(row[15]) if len(row) > 15 and isinstance(row[15], (int, float)) else 0.0
-    detalles = str(row[16]).strip() if len(row) > 16 and row[16] not in (None, 0, '') else ''
+    medioPago = str(row[13]).strip() if len(row) > 13 and row[13] not in (None, 0, '') else 'N/A'
+    comision = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0.0
+    observacion = str(row[15]).strip() if len(row) > 15 and row[15] not in (None, 0, '') else ''
+    compra_monto = float(row[16]) if len(row) > 16 and isinstance(row[16], (int, float)) else 0.0
+    compra_litros = float(row[17]) if len(row) > 17 and isinstance(row[17], (int, float)) else 0.0
+    detalles = str(row[18]).strip() if len(row) > 18 and row[18] not in (None, 0, '') else ''
 
     if 'VJYL61' in camion:
         camion_vjyl61_ops += 1
