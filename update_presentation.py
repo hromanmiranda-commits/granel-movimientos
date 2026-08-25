@@ -49,19 +49,24 @@ for row in rows[4:]:
     camion = str(row[4]).strip() if row[4] not in (None, '') else ''
     vendedor = str(row[5]).strip() if row[5] not in (None, '') else ''
     direccion = str(row[6]).strip() if len(row) > 6 and row[6] not in (None, 0, '') else 'N/A'
-    precio = float(row[7]) if len(row) > 7 and isinstance(row[7], (int, float)) else 0.0
-    litros = float(row[8]) if len(row) > 8 and isinstance(row[8], (int, float)) else 0.0
-    extraccion = float(row[11]) if len(row) > 11 and isinstance(row[11], (int, float)) else 0.0
-    total = float(row[12]) if len(row) > 12 and isinstance(row[12], (int, float)) else 0.0
+    def safe_float(val):
+        try:
+            return float(val) if val is not None else 0.0
+        except (ValueError, TypeError):
+            return 0.0
+            
+    precio = safe_float(row[7]) if len(row) > 7 else 0.0
+    litros = safe_float(row[8]) if len(row) > 8 else 0.0
+    extraccion = safe_float(row[11]) if len(row) > 11 else 0.0
+    total = safe_float(row[12]) if len(row) > 12 else 0.0
     if total == 0 and precio > 0 and litros > 0:
         total = precio * litros
 
     medioPago = str(row[13]).strip() if len(row) > 13 and row[13] not in (None, 0, '') else 'N/A'
-    comision = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0.0
-    print(f"Debug -> Cliente: {cliente} | comision_raw: {row[14] if len(row)>14 else 'short'} | comision: {comision}")
+    comision = safe_float(row[14]) if len(row) > 14 else 0.0
     observacion = str(row[15]).strip() if len(row) > 15 and row[15] not in (None, 0, '') else ''
-    compra_monto = float(row[16]) if len(row) > 16 and isinstance(row[16], (int, float)) else 0.0
-    compra_litros = float(row[17]) if len(row) > 17 and isinstance(row[17], (int, float)) else 0.0
+    compra_monto = safe_float(row[16]) if len(row) > 16 else 0.0
+    compra_litros = safe_float(row[17]) if len(row) > 17 else 0.0
     detalles = str(row[18]).strip() if len(row) > 18 and row[18] not in (None, 0, '') else ''
 
     if 'VJYL61' in camion:
