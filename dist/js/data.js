@@ -1,15 +1,15 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-24 22:07:06)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-25 00:33:30)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 68985.0,
         ventasLitros: 9198.8,
         stockSaldoLitros: 59786.2,
-        extraccionesLitros: 16564.0,
+        extraccionesLitros: 50221.0,
         montoCompras: 23231995.0,
         montoVentas: 7400100.0,
         guiasEnap: 6,
         ventasOps: 23,
-        extraccionesOps: 4,
+        extraccionesOps: 7,
         comisionesPagadas: 485760.0,
         comisionesPendientes: 694800.0,
         totalComisiones: 1180560.0,
@@ -18,7 +18,7 @@ window.GRANEL_DATA = {
         margenPromedioLitro: 467.69,
         porcentajeMargenBruto: 58.1,
         camionVJYL61Ops: 28,
-        camionVJYL42Ops: 5
+        camionVJYL42Ops: 8
     },
     transacciones: [
     {
@@ -386,6 +386,20 @@ window.GRANEL_DATA = {
         "detalles": ""
     },
     {
+        "fecha": "2026-08-17",
+        "cliente": "Ignacio Guerrero",
+        "camion": "VJYL42",
+        "vendedor": "Ignacio",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11344.0,
+        "total": 0.0,
+        "medioPago": "Extraccion",
+        "comision": 0.0,
+        "observacion": "Extraccion",
+        "detalles": ""
+    },
+    {
         "fecha": "2026-08-18",
         "cliente": "ENAP carga",
         "camion": "VJYL42",
@@ -411,6 +425,34 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2358522",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-19",
+        "cliente": "Ignacio Guerrero",
+        "camion": "VJYL42",
+        "vendedor": "Ignacio",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11225.0,
+        "total": 0.0,
+        "medioPago": "Extraccion",
+        "comision": 0.0,
+        "observacion": "Extraccion",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-20",
+        "cliente": "Ignacio Guerrero",
+        "camion": "VJYL42",
+        "vendedor": "Ignacio",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11088.0,
+        "total": 0.0,
+        "medioPago": "Extraccion",
+        "comision": 0.0,
+        "observacion": "Extraccion",
         "detalles": ""
     },
     {
