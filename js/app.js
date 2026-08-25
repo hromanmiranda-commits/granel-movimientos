@@ -1,6 +1,40 @@
-// Granel Movimientos - Dynamic Executive Command Center Controller
+// Auth Lock Security Control ("ECO")
+function checkAuthSession() {
+    const isAuth = sessionStorage.getItem('gm_auth_unlocked');
+    const overlay = document.getElementById('authOverlay');
+    if (isAuth === 'true' && overlay) {
+        overlay.classList.add('unlocked');
+    }
+}
+
+function handleAuthSubmit(e) {
+    if (e) e.preventDefault();
+    const pwdInput = document.getElementById('authPasswordInput');
+    const errorMsg = document.getElementById('authErrorMsg');
+    const overlay = document.getElementById('authOverlay');
+    if (!pwdInput) return;
+
+    const enteredVal = pwdInput.value.trim();
+
+    if (enteredVal === "ECO" || enteredVal === "eco" || enteredVal === "Eco") {
+        sessionStorage.setItem('gm_auth_unlocked', 'true');
+        if (overlay) overlay.classList.add('unlocked');
+        if (errorMsg) errorMsg.style.display = 'none';
+    } else {
+        pwdInput.classList.add('shake');
+        setTimeout(() => pwdInput.classList.remove('shake'), 400);
+        if (errorMsg) {
+            errorMsg.textContent = "Contraseña incorrecta. Intente nuevamente.";
+            errorMsg.style.display = "block";
+        }
+        pwdInput.value = "";
+        pwdInput.focus();
+    }
+}
+window.handleAuthSubmit = handleAuthSubmit;
 
 document.addEventListener('DOMContentLoaded', () => {
+    checkAuthSession();
 
     const btnFullscreen = document.getElementById('btnFullscreen');
 

@@ -89,6 +89,32 @@
 </head>
 <body>
 
+    <!-- Auth Lock Modal Overlay -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-card">
+            <div class="auth-icon">
+                <i class="ri-shield-keyhole-line"></i>
+            </div>
+            <h2 class="auth-title">Acceso Restringido</h2>
+            <p class="auth-subtitle">Ingrese la clave de autorización corporativa para visualizar la presentación Granel Movimientos.</p>
+
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="auth-input-group">
+                    <i class="ri-lock-2-line auth-input-icon"></i>
+                    <input type="password" id="authPasswordInput" class="auth-input" placeholder="Ingrese clave de acceso..." autocomplete="current-password" autofocus required>
+                </div>
+                <div id="authErrorMsg" class="auth-error-msg">Contraseña incorrecta. Intente nuevamente.</div>
+                <button type="submit" class="auth-btn">
+                    <i class="ri-key-2-line"></i> Acceder a la Presentación
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <i class="ri-shield-check-line"></i> Control de Seguridad Corporativa Granel Movimientos
+            </div>
+        </div>
+    </div>
+
     <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="brand">
@@ -321,8 +347,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/data.js?v=1787634428"></script>
-    <script src="js/app.js?v=1787634428"></script>
+    <script src="js/data.js?v=1787635126"></script>
+    <script src="js/app.js?v=1787635126"></script>
     <script>
         function switchView(viewName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
