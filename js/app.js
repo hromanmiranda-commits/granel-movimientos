@@ -265,6 +265,78 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) searchInput.addEventListener('input', renderTable);
     if (sellerFilter) sellerFilter.addEventListener('change', renderTable);
 
+    // Export to CSV Download Handler
+    function downloadCSV() {
+        if (!window.GRANEL_DATA || !window.GRANEL_DATA.transacciones) return;
+        
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const sellerVal = sellerFilter ? sellerFilter.value : 'ALL';
+
+        const filtered = window.GRANEL_DATA.transacciones.filter(tx => {
+            const matchesQuery = !query || 
+                (tx.cliente && tx.cliente.toLowerCase().includes(query)) ||
+                (tx.direccion && tx.direccion.toLowerCase().includes(query)) ||
+                (tx.observacion && tx.observacion.toLowerCase().includes(query)) ||
+                (tx.detalles && tx.detalles.toLowerCase().includes(query));
+
+            const matchesSeller = sellerVal === 'ALL' || (tx.vendedor && tx.vendedor.includes(sellerVal));
+            return matchesQuery && matchesSeller;
+        });
+
+        const headers = [
+            "Fecha",
+            "Cliente / Entidad",
+            "Camión",
+            "Vendedor / Canal",
+            "Dirección",
+            "Precio por Litro ($)",
+            "Litros",
+            "Total Recaudado ($)",
+            "Medio de Pago",
+            "Comisión ($)",
+            "Observación",
+            "Detalles"
+        ];
+
+        function escapeCSV(field) {
+            if (field === null || field === undefined) return '""';
+            const str = String(field).replace(/"/g, '""');
+            return `"${str}"`;
+        }
+
+        const rows = filtered.map(tx => [
+            escapeCSV(tx.fecha),
+            escapeCSV(tx.cliente),
+            escapeCSV(tx.camion),
+            escapeCSV(tx.vendedor),
+            escapeCSV(tx.direccion),
+            tx.precio || 0,
+            tx.litros || 0,
+            tx.total || 0,
+            escapeCSV(tx.medioPago),
+            tx.comision || 0,
+            escapeCSV(tx.observacion),
+            escapeCSV(tx.detalles)
+        ].join(';'));
+
+        const csvContent = '\uFEFF' + [headers.map(escapeCSV).join(';'), ...rows].join('\n');
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        
+        const dateStr = new Date().toISOString().split('T')[0];
+        link.setAttribute('href', url);
+        link.setAttribute('download', `Registro_Movimientos_Granel_${dateStr}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    const btnDownloadCSV = document.getElementById('btnDownloadCSV');
+    if (btnDownloadCSV) btnDownloadCSV.addEventListener('click', downloadCSV);
+
     // Initial Execution
     updateDynamicKPIs();
     renderCharts();

@@ -485,6 +485,34 @@ body {
     min-width: 240px;
 }
 
+.btn-download-csv {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 242, 254, 0.15));
+    border: 1px solid var(--accent-emerald);
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-download-csv:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(0, 242, 254, 0.3));
+    border-color: var(--primary-cyan);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-download-csv:active {
+    transform: translateY(0);
+}
+
 /* Grid Overview Drawer */
 .overview-modal {
     position: fixed;
