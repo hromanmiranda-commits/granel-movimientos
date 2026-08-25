@@ -56,7 +56,7 @@ if "ENAP" in wb.sheetnames:
     formulas = [
         "=SUMIFS('Detalles movimientos'!I$5:I$1000, 'Detalles movimientos'!F$5:F$1000, \"ENAP carga\")",
         "=SUMIFS('Detalles movimientos'!R$5:R$1000, 'Detalles movimientos'!F$5:F$1000, \"ENAP carga\")",
-        "=C6-B6",
+        "=C6-B6-SUM('Detalles movimientos'!L$5:L$1000)",
         "=SUMIFS('Detalles movimientos'!M$5:M$1000, 'Detalles movimientos'!F$5:F$1000, \"ENAP carga\")",
         "=COUNTIFS('Detalles movimientos'!F$5:F$1000, \"ENAP carga\")"
     ]

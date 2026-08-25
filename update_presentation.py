@@ -108,7 +108,7 @@ for row in rows[4:]:
     transactions.append(tx)
 
 total_comisiones = comisiones_pagadas + comisiones_pendientes
-stock_saldo = compras_l - ventas_l
+stock_saldo = compras_l - ventas_l - extracciones_l
 costo_prom_l = (monto_compras / compras_l) if compras_l > 0 else 336.77
 precio_prom_l = (monto_ventas / ventas_l) if ventas_l > 0 else 890.33
 margen_prom_l = precio_prom_l - costo_prom_l

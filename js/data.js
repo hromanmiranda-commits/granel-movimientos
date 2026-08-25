@@ -1,9 +1,9 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-25 00:33:30)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-25 00:45:33)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 68985.0,
         ventasLitros: 9198.8,
-        stockSaldoLitros: 59786.2,
+        stockSaldoLitros: 9565.199999999997,
         extraccionesLitros: 50221.0,
         montoCompras: 23231995.0,
         montoVentas: 7400100.0,
