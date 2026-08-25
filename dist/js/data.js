@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-24 17:48:21)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-24 22:01:16)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 68985.0,
@@ -10,9 +10,9 @@ window.GRANEL_DATA = {
         guiasEnap: 6,
         ventasOps: 23,
         extraccionesOps: 4,
-        comisionesPagadas: 0.0,
-        comisionesPendientes: 0.0,
-        totalComisiones: 0.0,
+        comisionesPagadas: 485760.0,
+        comisionesPendientes: 694800.0,
+        totalComisiones: 1180560.0,
         costoPromedioLitro: 336.77,
         precioPromedioVentaLitro: 804.46,
         margenPromedioLitro: 467.69,
@@ -59,7 +59,7 @@ window.GRANEL_DATA = {
         "litros": 179.2,
         "total": 179200.0,
         "medioPago": "Tarjeta",
-        "comision": 0.0,
+        "comision": 35840.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -73,7 +73,7 @@ window.GRANEL_DATA = {
         "litros": 518.1,
         "total": 518100.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 103620.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -87,7 +87,7 @@ window.GRANEL_DATA = {
         "litros": 488.2,
         "total": 488200.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 97640.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -101,7 +101,7 @@ window.GRANEL_DATA = {
         "litros": 500.3,
         "total": 500300.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 100060.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -115,7 +115,7 @@ window.GRANEL_DATA = {
         "litros": 237.9,
         "total": 237900.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 47580.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -129,7 +129,7 @@ window.GRANEL_DATA = {
         "litros": 205.1,
         "total": 205100.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 41020.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -143,9 +143,9 @@ window.GRANEL_DATA = {
         "litros": 300.0,
         "total": 300000.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 60000.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "2428.8"
     },
     {
         "fecha": "2026-07-28",
@@ -157,7 +157,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 200000.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 40000.0,
         "observacion": "",
         "detalles": ""
     },
@@ -185,7 +185,7 @@ window.GRANEL_DATA = {
         "litros": 747.0,
         "total": 747000.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 149400.0,
         "observacion": "Factura",
         "detalles": "Ebal spa - RUT: 77.625.623-4 - Av Gabriela 3264 La Pintana - Giro Construccion"
     },
@@ -199,7 +199,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 220000.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 40000.0,
         "observacion": "",
         "detalles": ""
     },
@@ -213,7 +213,7 @@ window.GRANEL_DATA = {
         "litros": 350.0,
         "total": 385000.0,
         "medioPago": "Transferencia en dos",
-        "comision": 0.0,
+        "comision": 70000.0,
         "observacion": "Quedó saldo de $35 mil para mañana",
         "detalles": ""
     },
@@ -241,7 +241,7 @@ window.GRANEL_DATA = {
         "litros": 270.0,
         "total": 297000.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 54000.0,
         "observacion": "Factura",
         "detalles": "Residencia Adulto Mayor Amor Eterno SpA - Rut 76.699.397-4 - Los Almendros Parcela2B Pirque"
     },
@@ -297,7 +297,7 @@ window.GRANEL_DATA = {
         "litros": 404.0,
         "total": 444400.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 80800.0,
         "observacion": "",
         "detalles": ""
     },
@@ -311,7 +311,7 @@ window.GRANEL_DATA = {
         "litros": 509.0,
         "total": 559900.0,
         "medioPago": "Transferencia",
-        "comision": 0.0,
+        "comision": 101800.0,
         "observacion": "",
         "detalles": ""
     },
@@ -423,7 +423,7 @@ window.GRANEL_DATA = {
         "litros": 294.0,
         "total": 294000.0,
         "medioPago": "Transferencia dos",
-        "comision": 0.0,
+        "comision": 58800.0,
         "observacion": "",
         "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     },
@@ -437,7 +437,7 @@ window.GRANEL_DATA = {
         "litros": 500.0,
         "total": 550000.0,
         "medioPago": "Pendiente de pago",
-        "comision": 0.0,
+        "comision": 100000.0,
         "observacion": "",
         "detalles": ""
     },
@@ -453,7 +453,7 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 -"
+        "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 - Av Concha y Toro #11 Puente Alto"
     },
     {
         "fecha": "2026-08-24",

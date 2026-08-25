@@ -58,6 +58,7 @@ for row in rows[4:]:
 
     medioPago = str(row[13]).strip() if len(row) > 13 and row[13] not in (None, 0, '') else 'N/A'
     comision = float(row[14]) if len(row) > 14 and isinstance(row[14], (int, float)) else 0.0
+    print(f"Debug -> Cliente: {cliente} | comision_raw: {row[14] if len(row)>14 else 'short'} | comision: {comision}")
     observacion = str(row[15]).strip() if len(row) > 15 and row[15] not in (None, 0, '') else ''
     compra_monto = float(row[16]) if len(row) > 16 and isinstance(row[16], (int, float)) else 0.0
     compra_litros = float(row[17]) if len(row) > 17 and isinstance(row[17], (int, float)) else 0.0
