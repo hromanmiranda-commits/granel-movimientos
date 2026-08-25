@@ -92,11 +92,43 @@
     <!-- Auth Lock Modal Overlay -->
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-card">
-            <div class="auth-icon">
-                <i class="ri-shield-keyhole-line"></i>
+            <div class="auth-brand-logo">
+                <svg class="ecogas-logo-svg" viewBox="0 0 340 120" width="180" height="64" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="ecoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#a3e635"/>
+                            <stop offset="100%" stop-color="#4ade80"/>
+                        </linearGradient>
+                        <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" stop-color="#0284c7"/>
+                            <stop offset="100%" stop-color="#38bdf8"/>
+                        </linearGradient>
+                        <linearGradient id="gasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2563eb"/>
+                            <stop offset="100%" stop-color="#60a5fa"/>
+                        </linearGradient>
+                        <linearGradient id="wave1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#38bdf8"/>
+                            <stop offset="100%" stop-color="#2563eb"/>
+                        </linearGradient>
+                        <linearGradient id="wave2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#4ade80"/>
+                            <stop offset="100%" stop-color="#059669"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="10" y="65" font-family="'Outfit', 'Inter', sans-serif" font-weight="800" font-size="62" font-style="italic" fill="url(#ecoGrad)" letter-spacing="-1">Eco</text>
+                    <path d="M 116 34 C 116 18, 125 10, 125 4 C 129 13, 136 18, 136 34 C 136 43, 127 48, 125 48 C 119 48, 116 41, 116 34 Z" fill="url(#flameGrad)" />
+                    <path d="M 121 36 C 121 27, 125 22, 125 18 C 127 23, 130 27, 130 36 C 130 40, 127 42, 125 42 C 123 42, 121 39, 121 36 Z" fill="#ffffff" opacity="0.95" />
+                    <text x="132" y="65" font-family="'Outfit', 'Inter', sans-serif" font-weight="800" font-size="62" font-style="italic" fill="url(#gasGrad)" letter-spacing="-1">Gas</text>
+                    <text x="220" y="94" font-family="'Outfit', 'Inter', sans-serif" font-weight="800" font-size="28" font-style="italic" fill="#a3e635">GLP</text>
+                    <path d="M 10 73 Q 150 75, 260 115 Q 150 85, 10 80 Z" fill="url(#wave1Grad)" />
+                    <path d="M 18 82 Q 140 85, 240 123 Q 140 94, 18 88 Z" fill="url(#wave2Grad)" />
+                </svg>
             </div>
-            <h2 class="auth-title">Acceso Restringido</h2>
-            <p class="auth-subtitle">Ingrese la clave de autorización corporativa para visualizar la presentación Granel Movimientos.</p>
+            <div class="auth-security-badge">
+                <i class="ri-shield-keyhole-line"></i> Acceso Restringido
+            </div>
+            <p class="auth-subtitle">Ingrese la clave de autorización corporativa de <strong>EcoGas GLP</strong> para acceder a la presentación.</p>
 
             <form id="authForm" onsubmit="handleAuthSubmit(event)">
                 <div class="auth-input-group">
@@ -347,8 +379,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/data.js?v=1787635126"></script>
-    <script src="js/app.js?v=1787635126"></script>
+    <script src="js/data.js?v=1787636028"></script>
+    <script src="js/app.js?v=1787636028"></script>
     <script>
         function switchView(viewName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
