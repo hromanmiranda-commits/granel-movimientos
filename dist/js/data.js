@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-25 01:04:17)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-25 01:07:08)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 68985.0,
@@ -368,7 +368,7 @@ window.GRANEL_DATA = {
         "total": 256000.0,
         "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "",
+        "observacion": "Factura",
         "detalles": "MISTER GUSS SPA - RUT 78.060.801-3 - PRIMERA TRANSVERSAL 828 PADRE HURTADO - RESTOBAR"
     },
     {
@@ -466,7 +466,7 @@ window.GRANEL_DATA = {
         "total": 294000.0,
         "medioPago": "Transferencia dos",
         "comision": 58800.0,
-        "observacion": "",
+        "observacion": "Factura",
         "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     },
     {
@@ -494,7 +494,7 @@ window.GRANEL_DATA = {
         "total": 110000.0,
         "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "",
+        "observacion": "Factura",
         "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 - Av Concha y Toro #11 Puente Alto"
     },
     {
@@ -522,7 +522,7 @@ window.GRANEL_DATA = {
         "total": 449000.0,
         "medioPago": "Transferencia",
         "comision": 0.0,
-        "observacion": "",
+        "observacion": "Factura",
         "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     }
 ]
