@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-25 01:33:48)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-25 13:00:38)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 68985.0,
+        comprasLitros: 80273.0,
         ventasLitros: 9198.8,
-        stockSaldoLitros: 9565.199999999997,
+        stockSaldoLitros: 20853.199999999997,
         extraccionesLitros: 50221.0,
-        montoCompras: 23231995.0,
+        montoCompras: 27004182.0,
         montoVentas: 7400100.0,
-        guiasEnap: 6,
+        guiasEnap: 7,
         ventasOps: 23,
         extraccionesOps: 7,
         comisionesPagadas: 485760.0,
         comisionesPendientes: 694800.0,
         totalComisiones: 1180560.0,
-        costoPromedioLitro: 336.77,
+        costoPromedioLitro: 336.40,
         precioPromedioVentaLitro: 804.46,
-        margenPromedioLitro: 467.69,
-        porcentajeMargenBruto: 58.1,
+        margenPromedioLitro: 468.06,
+        porcentajeMargenBruto: 58.2,
         camionVJYL61Ops: 28,
-        camionVJYL42Ops: 8
+        camionVJYL42Ops: 9
     },
     transacciones: [
     {
@@ -524,6 +524,20 @@ window.GRANEL_DATA = {
         "comision": 0.0,
         "observacion": "Factura",
         "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
+    },
+    {
+        "fecha": "2026-08-25",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11288.0,
+        "total": 3772187.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2360214",
+        "detalles": ""
     }
 ]
 };
