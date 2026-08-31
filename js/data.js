@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-31 10:58:20)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-31 17:21:24)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 102462.0,
+        comprasLitros: 113924.0,
         ventasLitros: 10364.8,
-        stockSaldoLitros: 41876.2,
+        stockSaldoLitros: 53338.2,
         extraccionesLitros: 50221.0,
-        montoCompras: 34419151.0,
+        montoCompras: 38309547.0,
         montoVentas: 8566100.0,
-        guiasEnap: 9,
+        guiasEnap: 10,
         ventasOps: 27,
         extraccionesOps: 7,
         comisionesPagadas: 485760.0,
         comisionesPendientes: 754800.0,
         totalComisiones: 1240560.0,
-        costoPromedioLitro: 335.92,
+        costoPromedioLitro: 336.27,
         precioPromedioVentaLitro: 826.46,
-        margenPromedioLitro: 490.54,
-        porcentajeMargenBruto: 59.4,
-        camionVJYL61Ops: 30,
-        camionVJYL42Ops: 13
+        margenPromedioLitro: 490.19,
+        porcentajeMargenBruto: 59.3,
+        camionVJYL61Ops: 29,
+        camionVJYL42Ops: 15
     },
     transacciones: [
     {
@@ -344,9 +344,9 @@ window.GRANEL_DATA = {
         "detalles": ""
     },
     {
-        "fecha": "2026-08-13",
+        "fecha": "2026-08-12",
         "cliente": "ENAP carga",
-        "camion": "VJYL61",
+        "camion": "VJYL42",
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
@@ -618,9 +618,23 @@ window.GRANEL_DATA = {
         "precio": 1000.0,
         "litros": 253.0,
         "total": 253000.0,
-        "medioPago": "Deposito efectivo PEN",
+        "medioPago": "Deposito efectivo",
         "comision": 0.0,
         "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-31",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11462.0,
+        "total": 3890396.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2361941",
         "detalles": ""
     }
 ]
