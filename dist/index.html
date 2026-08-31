@@ -156,7 +156,7 @@
                 <div class="brand-subtitle">EXECUTIVE COMMAND CENTER 2026</div>
             </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 1rem;">
+        <div class="nav-controls">
             <div class="timestamp-badge" id="updatedTimestampBadge">
                 <i class="ri-time-line"></i> <span id="timestampText">Datos actualizados</span>
             </div>
@@ -167,8 +167,8 @@
     </nav>
 
     <!-- Navigation Tabs Bar -->
-    <div style="background: rgba(11, 15, 25, 0.6); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 10px 2.5rem;">
-        <div style="max-width: 1600px; margin: 0 auto; display: flex; gap: 10px;">
+    <div class="tabs-nav-bar">
+        <div class="tabs-nav-container">
             <button class="tab-btn active" id="tabCmdCenter" onclick="switchView('cmdCenter')">
                 <i class="ri-dashboard-3-line"></i> Lámina Ejecutiva Consolidada
             </button>
@@ -379,8 +379,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/data.js?v=1788187433"></script>
-    <script src="js/app.js?v=1788187433"></script>
+    <script src="js/data.js?v=1788188027"></script>
+    <script src="js/app.js?v=1788188027"></script>
     <script>
         function switchView(viewName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));

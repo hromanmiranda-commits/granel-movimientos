@@ -165,6 +165,12 @@ if os.path.exists('index.html'):
     with open('dist/index.html', 'w', encoding='utf-8') as f:
         f.write(updated_html)
 
+if os.path.exists('styles.css'):
+    with open('styles.css', 'r', encoding='utf-8') as f:
+        css_content = f.read()
+    with open('dist/styles.css', 'w', encoding='utf-8') as f:
+        f.write(css_content)
+
 print(f"✓ ENAP Compras recalculadas: {compras_l:,.1f} Litros por ${monto_compras:,.0f} CLP ({guias_enap} Guías)")
 print(f"✓ Ventas recalculadas: {ventas_l:,.1f} Litros por ${monto_ventas:,.0f} CLP ({ventas_ops} Ventas)")
 print(f"✓ Stock Saldo actual: {stock_saldo:,.1f} Litros")
