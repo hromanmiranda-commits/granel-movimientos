@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-26 23:48:22)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-31 10:43:53)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 90961.0,
-        ventasLitros: 9198.8,
-        stockSaldoLitros: 31541.199999999997,
+        comprasLitros: 102462.0,
+        ventasLitros: 10364.8,
+        stockSaldoLitros: 41876.2,
         extraccionesLitros: 50221.0,
-        montoCompras: 30575790.0,
-        montoVentas: 7400100.0,
-        guiasEnap: 8,
-        ventasOps: 23,
+        montoCompras: 34419151.0,
+        montoVentas: 8566100.0,
+        guiasEnap: 9,
+        ventasOps: 27,
         extraccionesOps: 7,
         comisionesPagadas: 485760.0,
-        comisionesPendientes: 694800.0,
-        totalComisiones: 1180560.0,
-        costoPromedioLitro: 336.14,
-        precioPromedioVentaLitro: 804.46,
-        margenPromedioLitro: 468.32,
-        porcentajeMargenBruto: 58.2,
-        camionVJYL61Ops: 28,
-        camionVJYL42Ops: 10
+        comisionesPendientes: 754800.0,
+        totalComisiones: 1240560.0,
+        costoPromedioLitro: 335.92,
+        precioPromedioVentaLitro: 826.46,
+        margenPromedioLitro: 490.54,
+        porcentajeMargenBruto: 59.4,
+        camionVJYL61Ops: 30,
+        camionVJYL42Ops: 13
     },
     transacciones: [
     {
@@ -551,6 +551,76 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2360596",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-27",
+        "cliente": "Comercializadora Lavin",
+        "camion": "VJYL61",
+        "vendedor": "Tripulacion",
+        "direccion": "Ignacio Carrera Pinto 693 Padre Hurtado",
+        "precio": 1000.0,
+        "litros": 313.0,
+        "total": 313000.0,
+        "medioPago": "Transferencia",
+        "comision": 0.0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-27",
+        "cliente": "El Toro Manso",
+        "camion": "VJYL61",
+        "vendedor": "CJ",
+        "direccion": "Virginia Subercaso Pirque",
+        "precio": 1000.0,
+        "litros": 300.0,
+        "total": 300000.0,
+        "medioPago": "N/A",
+        "comision": 60000.0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-28",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11501.0,
+        "total": 3843361.0,
+        "medioPago": "N/A",
+        "comision": 0.0,
+        "observacion": "Guía N° 2361274",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-28",
+        "cliente": "Gastronomca Exquisite",
+        "camion": "VJYL42",
+        "vendedor": "Tripulacion",
+        "direccion": "JP Alesaandri 114 Nuñoa",
+        "precio": 1000.0,
+        "litros": 300.0,
+        "total": 300000.0,
+        "medioPago": "Transferencia",
+        "comision": 0.0,
+        "observacion": "",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-08-28",
+        "cliente": "Cuco¨s Pollo",
+        "camion": "VJYL42",
+        "vendedor": "Tripulacion",
+        "direccion": "Av Observatorio 1088 El Bosque",
+        "precio": 1000.0,
+        "litros": 253.0,
+        "total": 253000.0,
+        "medioPago": "Deposito efectivo PEN",
+        "comision": 0.0,
+        "observacion": "",
         "detalles": ""
     }
 ]
