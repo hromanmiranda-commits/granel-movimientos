@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-31 17:21:24)
+// Granel Movimientos Data Source (Auto-updated: 2026-08-31 23:48:28)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 113924.0,
@@ -17,8 +17,8 @@ window.GRANEL_DATA = {
         precioPromedioVentaLitro: 826.46,
         margenPromedioLitro: 490.19,
         porcentajeMargenBruto: 59.3,
-        camionVJYL61Ops: 29,
-        camionVJYL42Ops: 15
+        camionVJYL61Ops: 30,
+        camionVJYL42Ops: 14
     },
     transacciones: [
     {
@@ -344,9 +344,9 @@ window.GRANEL_DATA = {
         "detalles": ""
     },
     {
-        "fecha": "2026-08-12",
+        "fecha": "2026-08-13",
         "cliente": "ENAP carga",
-        "camion": "VJYL42",
+        "camion": "VJYL61",
         "vendedor": "ENAP carga",
         "direccion": "N/A",
         "precio": 0.0,
