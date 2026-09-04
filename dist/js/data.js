@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-08-31 23:48:28)
+// Granel Movimientos Data Source (Auto-updated: 2026-09-04 17:35:28)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 113924.0,
-        ventasLitros: 10364.8,
-        stockSaldoLitros: 53338.2,
+        ventasLitros: 11364.8,
+        stockSaldoLitros: 52338.2,
         extraccionesLitros: 50221.0,
         montoCompras: 38309547.0,
-        montoVentas: 8566100.0,
+        montoVentas: 9416100.0,
         guiasEnap: 10,
-        ventasOps: 27,
+        ventasOps: 28,
         extraccionesOps: 7,
         comisionesPagadas: 485760.0,
         comisionesPendientes: 754800.0,
         totalComisiones: 1240560.0,
         costoPromedioLitro: 336.27,
-        precioPromedioVentaLitro: 826.46,
-        margenPromedioLitro: 490.19,
-        porcentajeMargenBruto: 59.3,
-        camionVJYL61Ops: 30,
-        camionVJYL42Ops: 14
+        precioPromedioVentaLitro: 828.53,
+        margenPromedioLitro: 492.26,
+        porcentajeMargenBruto: 59.4,
+        camionVJYL61Ops: 32,
+        camionVJYL42Ops: 13
     },
     transacciones: [
     {
@@ -598,7 +598,7 @@ window.GRANEL_DATA = {
     {
         "fecha": "2026-08-28",
         "cliente": "Gastronomca Exquisite",
-        "camion": "VJYL42",
+        "camion": "VJYL61",
         "vendedor": "Tripulacion",
         "direccion": "JP Alesaandri 114 Nuñoa",
         "precio": 1000.0,
@@ -635,6 +635,20 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2361941",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-09-02",
+        "cliente": "Cristobal Bravo",
+        "camion": "VJYL61",
+        "vendedor": "Tripulacion",
+        "direccion": "Pirque",
+        "precio": 850.0,
+        "litros": 1000.0,
+        "total": 850000.0,
+        "medioPago": "Pendiente de pago",
+        "comision": 0.0,
+        "observacion": "",
         "detalles": ""
     }
 ]
