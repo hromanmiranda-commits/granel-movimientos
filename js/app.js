@@ -81,17 +81,17 @@ function populateMonthControls() {
     const pillsContainer = document.getElementById('monthPillsContainer');
 
     const optionsHTML = `
-        <option value="ALL">📅 Todos los Meses (Consolidado)</option>
-        ${months.map(m => `<option value="${m}">📆 ${getMonthLabel(m)}</option>`).join('')}
+        <option value="ALL">Todos los Meses (Consolidado)</option>
+        ${months.map(m => `<option value="${m}">${getMonthLabel(m)}</option>`).join('')}
     `;
 
     if (dashSelect) dashSelect.innerHTML = optionsHTML;
     if (tableSelect) tableSelect.innerHTML = optionsHTML;
 
     if (pillsContainer) {
-        let pillsHTML = `<button class="month-pill active" data-month="ALL"><i class="ri-apps-2-line"></i> Todos los Meses</button>`;
+        let pillsHTML = `<button type="button" class="month-pill active" data-month="ALL"><i class="ri-apps-2-line"></i> Todos los Meses</button>`;
         months.forEach(m => {
-            pillsHTML += `<button class="month-pill" data-month="${m}"><i class="ri-calendar-event-line"></i> ${getMonthLabel(m)}</button>`;
+            pillsHTML += `<button type="button" class="month-pill" data-month="${m}"><i class="ri-calendar-event-line"></i> ${getMonthLabel(m)}</button>`;
         });
         pillsContainer.innerHTML = pillsHTML;
 
