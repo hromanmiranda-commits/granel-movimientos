@@ -185,14 +185,30 @@
         <div id="panelCmdCenter" class="view-panel active">
             
             <!-- Header Title Banner -->
-            <div class="header-bar" style="margin-bottom: 1.25rem;">
+            <div class="header-bar" style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                 <div>
                     <h1 style="font-family: var(--font-heading); font-size: 1.8rem; color: #ffffff;">
                         Lámina Ejecutiva Consolidada 2026
                     </h1>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">
-                        Resumen único de compras ENAP, ventas comerciales, distribución por canal y estado de comisiones.
+                        Resumen de compras ENAP, ventas comerciales, distribución por canal y comisiones.
                     </p>
+                </div>
+                <!-- Month Selection Dropdown in Header -->
+                <div class="month-select-wrapper">
+                    <i class="ri-calendar-event-line" style="color: var(--primary-cyan); font-size: 1.1rem;"></i>
+                    <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">Periodo:</span>
+                    <select id="dashboardMonthSelect">
+                        <!-- Filled dynamically by app.js -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Month Quick Filter Pills Bar -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap;">
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">Filtrar Mes:</span>
+                <div class="month-filter-group" id="monthPillsContainer">
+                    <!-- Pills filled dynamically by app.js -->
                 </div>
             </div>
 
@@ -312,19 +328,36 @@
                     <div>
                         <h4 style="font-size: 0.95rem; color: var(--accent-amber); margin-bottom: 8px; display: flex; justify-content: space-between;">
                             <span><i class="ri-wallet-3-line"></i> Estado de Comisiones CJ</span>
-                            <span style="font-size: 0.8rem; color: var(--accent-rose);" id="txtComisionesPendientes">$536,000 Pendiente</span>
+                            <span style="font-size: 0.8rem; color: var(--accent-rose);" id="txtComisionesPendientes">$0 Pendiente</span>
                         </h4>
-                        <div style="height: 22px; background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; display: flex;">
-                            <div style="width: 47.5%; background: linear-gradient(90deg, var(--accent-emerald), #34d399); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #0b0f19;">
-                                47.5% Pagado ($485.8K)
+                        <div id="comisionesProgressBar" style="height: 22px; background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; display: flex;">
+                            <div id="barComisionesPagadas" style="width: 50%; background: linear-gradient(90deg, var(--accent-emerald), #34d399); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #0b0f19;">
+                                Pagado
                             </div>
-                            <div style="width: 52.5%; background: linear-gradient(90deg, var(--accent-rose), #f87171); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #ffffff;">
-                                52.5% Pendiente ($536K)
+                            <div id="barComisionesPendientes" style="width: 50%; background: linear-gradient(90deg, var(--accent-rose), #f87171); height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #ffffff;">
+                                Pendiente
                             </div>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Row 3: Monthly Trend & Comparison Chart -->
+            <div class="glass-card" style="margin-top: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+                            <i class="ri-bar-chart-grouped-line" style="color: var(--primary-cyan);"></i> Evolución y Comparativa Mensual
+                        </h3>
+                        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                            Comparativa histórica de Ventas Recaudadas ($), Compras ENAP ($) y Litros Distribuidos por mes.
+                        </p>
+                    </div>
+                </div>
+                <div class="chart-box-monthly">
+                    <canvas id="chartComparativa"></canvas>
+                </div>
             </div>
 
         </div>
@@ -335,11 +368,14 @@
                 <div class="slide-header" style="margin-bottom: 1rem;">
                     <span class="slide-tag">Explorador de Datos</span>
                     <h2 class="slide-title">Registro Completo de Movimientos</h2>
-                    <p class="slide-subtitle">Filtra y explora todas las operaciones de compras, ventas y extracciones en tiempo real.</p>
+                    <p class="slide-subtitle">Filtra y explora todas las operaciones de compras, ventas y extracciones por mes y vendedor.</p>
                 </div>
 
                 <div class="filter-bar">
                     <input type="text" id="searchInput" class="input-search" placeholder="🔍 Buscar por cliente, dirección u observación...">
+                    <select id="tableMonthFilter" class="select-filter">
+                        <!-- Filled dynamically by app.js -->
+                    </select>
                     <select id="sellerFilter" class="select-filter">
                         <option value="ALL">Todos los Vendedores / Canales</option>
                         <option value="CJ">CJ (Comisionista JC)</option>
@@ -379,8 +415,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/data.js?v=1789392927"></script>
-    <script src="js/app.js?v=1789392927"></script>
+    <script src="js/data.js?v=1789393324"></script>
+    <script src="js/app.js?v=1789393324"></script>
     <script>
         function switchView(viewName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
