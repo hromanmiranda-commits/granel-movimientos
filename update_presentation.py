@@ -183,7 +183,7 @@ try:
         with open(token_path, 'r') as tf:
             token = tf.read().strip()
         user = 'hromanmiranda-commits'
-        remote_url = f'https://{token}@github.com/{user}/granel-movimientos.git'
+        remote_url = f'https://x-access-token:{token}@github.com/{user}/granel-movimientos.git'
         
         subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
         subprocess.run(["git", "add", "."], check=True)
