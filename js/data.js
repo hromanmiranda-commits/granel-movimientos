@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-10-12 10:05:46)
+// Granel Movimientos Data Source (Auto-updated: 2026-10-13 22:15:05)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 483032.0,
+        comprasLitros: 516450.0,
         ventasLitros: 14636.5,
-        stockSaldoLitros: 418174.5,
+        stockSaldoLitros: 451592.5,
         extraccionesLitros: 50221.0,
-        montoCompras: 163700345.0,
+        montoCompras: 176036988.0,
         montoVentas: 11684200.0,
-        guiasEnap: 43,
+        guiasEnap: 46,
         ventasOps: 35,
         extraccionesOps: 7,
         comisionesPagadas: 485760.0,
         comisionesPendientes: 754800.0,
         totalComisiones: 1240560.0,
-        costoPromedioLitro: 338.90,
+        costoPromedioLitro: 340.86,
         precioPromedioVentaLitro: 798.29,
-        margenPromedioLitro: 459.39,
-        porcentajeMargenBruto: 57.5,
-        camionVJYL61Ops: 50,
-        camionVJYL42Ops: 35
+        margenPromedioLitro: 457.43,
+        porcentajeMargenBruto: 57.3,
+        camionVJYL61Ops: 52,
+        camionVJYL42Ops: 36
     },
     transacciones: [
     {
@@ -1209,6 +1209,48 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375063",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-12",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11133.0,
+        "total": 4109832.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2375303",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-12",
+        "cliente": "ENAP carga",
+        "camion": "VJYL61",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11133.0,
+        "total": 4109832.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2375310",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-13",
+        "cliente": "ENAP carga",
+        "camion": "VJYL61",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11152.0,
+        "total": 4116979.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2375632",
         "detalles": ""
     }
 ]
