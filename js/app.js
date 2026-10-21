@@ -233,6 +233,31 @@ function updateDynamicKPIs() {
     const margenPromL = precioPromL - costoPromL;
     const pctMargen = precioPromL > 0 ? ((margenPromL / precioPromL) * 100) : 60.6;
 
+    // Top Row 4 KPI Cards
+    const valCompras = document.getElementById('valCompras');
+    if (valCompras) valCompras.textContent = `${comprasL.toLocaleString('es-CL')} L`;
+
+    const badgeGuias = document.getElementById('badgeGuias');
+    if (badgeGuias) badgeGuias.textContent = `${guiCount} Guías`;
+
+    const valMontoCompras = document.getElementById('valMontoCompras');
+    if (valMontoCompras) valMontoCompras.textContent = formatM(comprasMonto);
+
+    const valStock = document.getElementById('valStock');
+    if (valStock) valStock.textContent = `${stockSaldo.toLocaleString('es-CL')} L`;
+
+    const valVentas = document.getElementById('valVentas');
+    if (valVentas) valVentas.textContent = formatCLP(ventasMonto);
+
+    const badgeVentasLitros = document.getElementById('badgeVentasLitros');
+    if (badgeVentasLitros) badgeVentasLitros.textContent = `${ventasL.toLocaleString('es-CL')} Litros`;
+
+    const valMargen = document.getElementById('valMargenPct') || document.getElementById('valMargen');
+    if (valMargen) valMargen.textContent = `${pctMargen.toFixed(1)}%`;
+
+    const badgeSpreadUnit = document.getElementById('badgeSpreadUnit');
+    if (badgeSpreadUnit) badgeSpreadUnit.textContent = `+$${margenPromL.toFixed(2)} / L`;
+
     // Calcular toneladas mensuales de ENAP
     const mesesToneladas = {};
     let totalToneladasGlobal = 0.0;
