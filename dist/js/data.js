@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-10-21 01:11:58)
+// Granel Movimientos Data Source (Auto-updated: 2026-10-21 01:20:57)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 605183.0,
@@ -17,6 +17,7 @@ window.GRANEL_DATA = {
         precioPromedioVentaLitro: 798.29,
         margenPromedioLitro: 453.28,
         porcentajeMargenBruto: 56.8,
+        totalToneladasEnap: 312.57,
         camionVJYL61Ops: 56,
         camionVJYL42Ops: 40
     },
@@ -33,7 +34,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° xxxxx",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.93
     },
     {
         "fecha": "2026-07-27",
@@ -47,7 +49,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -61,7 +64,8 @@ window.GRANEL_DATA = {
         "medioPago": "Tarjeta",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -75,7 +79,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pendiente de pago",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -89,7 +94,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pagado",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -103,7 +109,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pagado",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -117,7 +124,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pagado",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -131,7 +139,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pagado",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-27",
@@ -145,7 +154,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pendiente de pago",
         "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-28",
@@ -159,7 +169,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-28",
@@ -173,7 +184,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-07-30",
@@ -187,7 +199,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Ebal spa - RUT: 77.625.623-4 - Av Gabriela 3264 La Pintana - Giro Construccion"
+        "detalles": "Ebal spa - RUT: 77.625.623-4 - Av Gabriela 3264 La Pintana - Giro Construccion",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-03",
@@ -201,7 +214,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-03",
@@ -215,7 +229,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia en dos",
         "comision": 0.0,
         "observacion": "Quedó saldo de $35 mil para mañana",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-04",
@@ -229,7 +244,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-05",
@@ -243,7 +259,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Residencia Adulto Mayor Amor Eterno SpA - Rut 76.699.397-4 - Los Almendros Parcela2B Pirque"
+        "detalles": "Residencia Adulto Mayor Amor Eterno SpA - Rut 76.699.397-4 - Los Almendros Parcela2B Pirque",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-07",
@@ -257,7 +274,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Gastronomica Exquisite SpA - Rut: 77.714.318-2 - JP alessandri 114 Nuñoa"
+        "detalles": "Gastronomica Exquisite SpA - Rut: 77.714.318-2 - JP alessandri 114 Nuñoa",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-07",
@@ -271,7 +289,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-08",
@@ -285,7 +304,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-11",
@@ -299,7 +319,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-11",
@@ -313,7 +334,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-12",
@@ -327,7 +349,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2356186",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 6.0
     },
     {
         "fecha": "2026-08-13",
@@ -341,7 +364,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-13",
@@ -355,7 +379,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2356453",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.93
     },
     {
         "fecha": "2026-08-13",
@@ -369,7 +394,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "MISTER GUSS SPA - RUT 78.060.801-3 - PRIMERA TRANSVERSAL 828 PADRE HURTADO - RESTOBAR"
+        "detalles": "MISTER GUSS SPA - RUT 78.060.801-3 - PRIMERA TRANSVERSAL 828 PADRE HURTADO - RESTOBAR",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-14",
@@ -383,7 +409,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2356889",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 6.02
     },
     {
         "fecha": "2026-08-17",
@@ -397,7 +424,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-18",
@@ -411,7 +439,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2358078",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.92
     },
     {
         "fecha": "2026-08-19",
@@ -425,7 +454,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2358522",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.83
     },
     {
         "fecha": "2026-08-19",
@@ -439,7 +469,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-20",
@@ -453,7 +484,8 @@ window.GRANEL_DATA = {
         "medioPago": "Extraccion",
         "comision": 0.0,
         "observacion": "Extraccion",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-20",
@@ -467,7 +499,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia dos",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
+        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-20",
@@ -481,7 +514,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pendiente de pago",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-20",
@@ -495,7 +529,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 - Av Concha y Toro #11 Puente Alto"
+        "detalles": "Brasas y Sabor SpA - RUT 76.378-704-4 - Av Concha y Toro #11 Puente Alto",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-24",
@@ -509,7 +544,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-24",
@@ -523,7 +559,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "Factura",
-        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
+        "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-25",
@@ -537,7 +574,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2360214",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.83
     },
     {
         "fecha": "2026-08-26",
@@ -551,7 +589,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2360596",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.52
     },
     {
         "fecha": "2026-08-27",
@@ -565,7 +604,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-27",
@@ -579,7 +619,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-28",
@@ -593,7 +634,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "Guía N° 2361274",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.94
     },
     {
         "fecha": "2026-08-28",
@@ -607,7 +649,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-28",
@@ -621,7 +664,8 @@ window.GRANEL_DATA = {
         "medioPago": "Deposito efectivo",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-08-31",
@@ -635,7 +679,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2361941",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.92
     },
     {
         "fecha": "2026-09-02",
@@ -649,7 +694,8 @@ window.GRANEL_DATA = {
         "medioPago": "Pagado",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-03",
@@ -663,7 +709,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-05",
@@ -677,7 +724,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2363973",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.93
     },
     {
         "fecha": "2026-09-06",
@@ -691,7 +739,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-06",
@@ -705,7 +754,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-07",
@@ -719,7 +769,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2364285",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.83
     },
     {
         "fecha": "2026-09-08",
@@ -733,7 +784,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2364754",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.84
     },
     {
         "fecha": "2026-09-09",
@@ -747,7 +799,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2365221",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.86
     },
     {
         "fecha": "2026-09-10",
@@ -761,7 +814,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2365840",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.83
     },
     {
         "fecha": "2026-09-11",
@@ -775,7 +829,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2366189",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-09-12",
@@ -789,7 +844,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2366535",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.86
     },
     {
         "fecha": "2026-09-14",
@@ -803,7 +859,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2366964",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-09-16",
@@ -817,7 +874,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2367767",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.71
     },
     {
         "fecha": "2026-09-16",
@@ -831,7 +889,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2367813",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.7
     },
     {
         "fecha": "2026-09-17",
@@ -845,7 +904,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2368175",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.72
     },
     {
         "fecha": "2026-09-17",
@@ -859,7 +919,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2368199",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.71
     },
     {
         "fecha": "2026-09-18",
@@ -873,7 +934,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2368296",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.8
     },
     {
         "fecha": "2026-09-18",
@@ -887,7 +949,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2368302",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.82
     },
     {
         "fecha": "2026-09-21",
@@ -901,7 +964,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2368758",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.73
     },
     {
         "fecha": "2026-09-22",
@@ -915,7 +979,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2369174",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.8
     },
     {
         "fecha": "2026-09-23",
@@ -929,7 +994,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2369529",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.74
     },
     {
         "fecha": "2026-09-23",
@@ -943,7 +1009,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2369600",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.77
     },
     {
         "fecha": "2026-09-24",
@@ -957,7 +1024,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2369880",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-09-25",
@@ -971,7 +1039,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2370275",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.79
     },
     {
         "fecha": "2026-09-25",
@@ -985,7 +1054,8 @@ window.GRANEL_DATA = {
         "medioPago": "Transferencia",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-25",
@@ -999,7 +1069,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-25",
@@ -1013,7 +1084,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-26",
@@ -1027,7 +1099,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2370601",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.77
     },
     {
         "fecha": "2026-09-26",
@@ -1041,7 +1114,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2370615",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.73
     },
     {
         "fecha": "2026-09-28",
@@ -1055,7 +1129,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2370973",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.67
     },
     {
         "fecha": "2026-09-28",
@@ -1069,7 +1144,8 @@ window.GRANEL_DATA = {
         "medioPago": "N/A",
         "comision": 0.0,
         "observacion": "",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 0.0
     },
     {
         "fecha": "2026-09-30",
@@ -1083,7 +1159,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2371924",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.79
     },
     {
         "fecha": "2026-10-02",
@@ -1097,7 +1174,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2372734",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.77
     },
     {
         "fecha": "2026-10-02",
@@ -1111,7 +1189,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2372742",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.77
     },
     {
         "fecha": "2026-10-03",
@@ -1125,7 +1204,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2372987",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.8
     },
     {
         "fecha": "2026-10-05",
@@ -1139,7 +1219,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2373313",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-10-06",
@@ -1153,7 +1234,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2373685",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-10-08",
@@ -1167,7 +1249,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2374399",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.78
     },
     {
         "fecha": "2026-10-09",
@@ -1181,7 +1264,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2374704",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.71
     },
     {
         "fecha": "2026-10-10",
@@ -1195,7 +1279,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375047",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.76
     },
     {
         "fecha": "2026-10-10",
@@ -1209,7 +1294,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375063",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.75
     },
     {
         "fecha": "2026-10-12",
@@ -1223,7 +1309,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375303",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.75
     },
     {
         "fecha": "2026-10-12",
@@ -1237,7 +1324,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375310",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.75
     },
     {
         "fecha": "2026-10-13",
@@ -1251,7 +1339,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2375632",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.76
     },
     {
         "fecha": "2026-10-15",
@@ -1265,7 +1354,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2376368",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.73
     },
     {
         "fecha": "2026-10-15",
@@ -1279,7 +1369,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2376392",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.74
     },
     {
         "fecha": "2026-10-16",
@@ -1293,7 +1384,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2376802",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.76
     },
     {
         "fecha": "2026-10-16",
@@ -1307,7 +1399,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2376794",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.74
     },
     {
         "fecha": "2026-10-17",
@@ -1321,7 +1414,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2377115",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.75
     },
     {
         "fecha": "2026-10-19",
@@ -1335,7 +1429,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2377567",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.7
     },
     {
         "fecha": "2026-10-20",
@@ -1349,7 +1444,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2377964",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.72
     },
     {
         "fecha": "2026-10-20",
@@ -1363,7 +1459,8 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2377979",
-        "detalles": ""
+        "detalles": "",
+        "toneladas": 5.69
     }
 ]
 };

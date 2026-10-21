@@ -233,30 +233,82 @@ function updateDynamicKPIs() {
     const margenPromL = precioPromL - costoPromL;
     const pctMargen = precioPromL > 0 ? ((margenPromL / precioPromL) * 100) : 60.6;
 
-    // Top Row 4 KPI Cards
-    const valCompras = document.getElementById('valCompras');
-    if (valCompras) valCompras.textContent = `${comprasL.toLocaleString('es-CL')} L`;
+    // Calcular toneladas mensuales de ENAP
+    const mesesToneladas = {};
+    let totalToneladasGlobal = 0.0;
+    let toneladasMesActual = 0.0;
 
-    const badgeGuias = document.getElementById('badgeGuias');
-    if (badgeGuias) badgeGuias.textContent = `${guiCount} Guías`;
+    const txsAll = window.GRANEL_DATA.transacciones || [];
+    txsAll.forEach(tx => {
+        const v = tx.vendedor || '';
+        const c = tx.cliente || '';
+        const obs = tx.observacion || '';
+        const det = tx.detalles || '';
+        const ton = tx.toneladas || 0.0;
 
-    const valMontoCompras = document.getElementById('valMontoCompras');
-    if (valMontoCompras) valMontoCompras.textContent = formatM(comprasMonto);
+        if (v.includes('ENAP') || c.includes('ENAP') || det.includes('Guía') || obs.includes('Guía')) {
+            const mKey = tx.fecha.substring(0, 7); // YYYY-MM
+            if (!mesesToneladas[mKey]) {
+                mesesToneladas[mKey] = { toneladas: 0.0, litros: 0, guias: 0, monto: 0 };
+            }
+            mesesToneladas[mKey].toneladas += ton;
+            mesesToneladas[mKey].litros += (tx.litros || 0);
+            mesesToneladas[mKey].monto += (tx.total || 0);
+            mesesToneladas[mKey].guias += 1;
+            totalToneladasGlobal += ton;
 
-    const valStock = document.getElementById('valStock');
-    if (valStock) valStock.textContent = `${stockSaldo.toLocaleString('es-CL')} L`;
+            if (selectedMonth !== 'ALL' && mKey === selectedMonth) {
+                toneladasMesActual += ton;
+            }
+        }
+    });
 
-    const valVentas = document.getElementById('valVentas');
-    if (valVentas) valVentas.textContent = formatCLP(ventasMonto);
+    // Badge Toneladas en Card Compras ENAP
+    const badgeToneladasMes = document.getElementById('badgeToneladasMes');
+    if (badgeToneladasMes) {
+        if (selectedMonth === 'ALL') {
+            badgeToneladasMes.textContent = `${totalToneladasGlobal.toFixed(2)} Ton`;
+        } else {
+            badgeToneladasMes.textContent = `${toneladasMesActual.toFixed(2)} Ton (${getMonthLabel(selectedMonth)})`;
+        }
+    }
 
-    const badgeVentasLitros = document.getElementById('badgeVentasLitros');
-    if (badgeVentasLitros) badgeVentasLitros.textContent = `${ventasL.toLocaleString('es-CL')} Litros`;
+    // Total Acumulado en el Cuadro de Toneladas
+    const txtTotalToneladasGlobal = document.getElementById('txtTotalToneladasGlobal');
+    if (txtTotalToneladasGlobal) {
+        txtTotalToneladasGlobal.textContent = `${totalToneladasGlobal.toFixed(2)} Ton`;
+    }
 
-    const valMargen = document.getElementById('valMargenPct') || document.getElementById('valMargen');
-    if (valMargen) valMargen.textContent = `${pctMargen.toFixed(1)}%`;
+    // Grid de Tarjetas de Toneladas por Mes
+    const gridToneladasMeses = document.getElementById('gridToneladasMeses');
+    if (gridToneladasMeses) {
+        const sortedMeses = Object.keys(mesesToneladas).sort().reverse();
+        gridToneladasMeses.innerHTML = sortedMeses.map(mKey => {
+            const mData = mesesToneladas[mKey];
+            const isCurrentSelected = (selectedMonth === mKey);
+            const isOct = mKey.endsWith('-10');
+            const borderCol = isCurrentSelected ? 'var(--primary-cyan)' : (isOct ? 'var(--accent-purple)' : 'rgba(255,255,255,0.08)');
+            const bgCard = isCurrentSelected ? 'rgba(0, 242, 254, 0.12)' : (isOct ? 'rgba(139, 92, 246, 0.15)' : 'rgba(255,255,255,0.03)');
 
-    const badgeSpreadUnit = document.getElementById('badgeSpreadUnit');
-    if (badgeSpreadUnit) badgeSpreadUnit.textContent = `+$${margenPromL.toFixed(2)} / L`;
+            return `
+                <div style="background: ${bgCard}; border: 1px solid ${borderCol}; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; transition: all 0.2s ease;" onclick="setMonthFilter('${mKey}')" title="Clic para filtrar ${getMonthLabel(mKey)}">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.82rem; font-weight: 700; color: ${isCurrentSelected ? 'var(--primary-cyan)' : '#ffffff'};">
+                            ${getMonthLabel(mKey)} ${isOct ? '⭐' : ''}
+                        </span>
+                        <span class="badge badge-blue" style="font-size: 0.7rem;">${mData.guias} Guías</span>
+                    </div>
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-purple); letter-spacing: -0.5px;">
+                        ${mData.toneladas.toFixed(2)} <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim);">Ton</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px;">
+                        <span>${mData.litros.toLocaleString('es-CL')} L</span>
+                        <span style="color: var(--accent-emerald);">${formatM(mData.monto)}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
 
     // Col 1 Summary Texts
     const txtVentasL = document.getElementById('txtVentasL');

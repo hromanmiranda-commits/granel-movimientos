@@ -215,7 +215,10 @@
             <!-- Row 1: Key Performance Highlights (4 KPI Cards) -->
             <div class="grid-4" style="margin-bottom: 1.25rem;">
                 <div class="glass-card">
-                    <div class="kpi-title">Compras ENAP Carga</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="kpi-title">Compras ENAP Carga</div>
+                        <span class="badge badge-purple" id="badgeToneladasMes" style="font-size: 0.75rem; font-weight: 700;">0 Ton</span>
+                    </div>
                     <div class="kpi-value purple" id="valCompras">0 L</div>
                     <div class="kpi-sub">
                         <span class="badge badge-blue" id="badgeGuias">4 Guías</span> <span id="valMontoCompras">$0 CLP</span>
@@ -241,6 +244,27 @@
                     <div class="kpi-sub">
                         <span class="badge badge-amber" id="badgeSpreadUnit">+$0 / L</span> Ganancia neta
                     </div>
+                </div>
+            </div>
+
+            <!-- CUADRO DE CONTROL: TONELADAS COMPRADAS POR MES (LÍMITE MENSUAL) -->
+            <div class="glass-card" style="margin-bottom: 1.25rem; border: 1px solid rgba(139, 92, 246, 0.35); background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(11, 15, 25, 0.7) 100%);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+                            <i class="ri-scales-3-line" style="color: var(--accent-purple);"></i> Control de Compras por Mes en Toneladas (Límite ENAP)
+                        </h3>
+                        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                            Monitoreo mensual de volumen adquirido en TNM (Toneladas Métricas) para control de cupo.
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 0.82rem; color: var(--text-dim);">Total Acumulado Histórico:</span>
+                        <strong style="color: var(--accent-purple); font-size: 1.1rem;" id="txtTotalToneladasGlobal">0.00 Ton</strong>
+                    </div>
+                </div>
+                <div id="gridToneladasMeses" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                    <!-- Filled dynamically by app.js with each month's total toneladas, guías y litros -->
                 </div>
             </div>
 
@@ -415,8 +439,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/data.js?v=1792555918"></script>
-    <script src="js/app.js?v=1792555918"></script>
+    <script src="js/data.js?v=1792556457"></script>
+    <script src="js/app.js?v=1792556457"></script>
     <script>
         function switchView(viewName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));

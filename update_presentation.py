@@ -68,6 +68,9 @@ for row in rows[4:]:
     compra_monto = safe_float(row[16]) if len(row) > 16 else 0.0
     compra_litros = safe_float(row[17]) if len(row) > 17 else 0.0
     detalles = str(row[18]).strip() if len(row) > 18 and row[18] not in (None, 0, '') else ''
+    toneladas = safe_float(row[23]) if len(row) > 23 else 0.0
+    if toneladas == 0.0 and compra_litros > 0:
+        toneladas = round(compra_litros / 1936.1888, 3)
 
     if 'VJYL61' in camion:
         camion_vjyl61_ops += 1
@@ -103,7 +106,8 @@ for row in rows[4:]:
         'medioPago': medioPago,
         'comision': comision,
         'observacion': observacion,
-        'detalles': detalles
+        'detalles': detalles,
+        'toneladas': toneladas
     }
     transactions.append(tx)
 
@@ -135,6 +139,7 @@ window.GRANEL_DATA = {{
         precioPromedioVentaLitro: {precio_prom_l:.2f},
         margenPromedioLitro: {margen_prom_l:.2f},
         porcentajeMargenBruto: {pct_margen:.1f},
+        totalToneladasEnap: {round(sum(tx['toneladas'] for tx in transactions if 'ENAP' in tx['cliente'] or 'ENAP' in tx['vendedor']), 2)},
         camionVJYL61Ops: {camion_vjyl61_ops},
         camionVJYL42Ops: {camion_vjyl42_ops}
     }},
