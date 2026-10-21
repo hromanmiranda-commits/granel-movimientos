@@ -41,7 +41,8 @@ def extraer_datos_factura(pdf_path):
         'fecha': None,
         'numero_guia': None,
         'valor_neto': None,
-        'valor_total': None
+        'valor_total': None,
+        'toneladas': None
     }
 
     # N° Factura: FACTURA ELECTRONICA N° 000853450
@@ -61,6 +62,16 @@ def extraer_datos_factura(pdf_path):
         m_guia = re.search(r'N[°º]\s*GUIA.*?0*(\d{6,8})', texto, re.DOTALL | re.IGNORECASE)
     if m_guia:
         datos['numero_guia'] = m_guia.group(1).lstrip('0')
+
+    # Volumen / Toneladas: 5,720 TNM PROPANO COMERCIAL
+    m_vol = re.search(r'([\d,\.]+)\s*TNM\s+PROPANO', texto, re.IGNORECASE)
+    if not m_vol:
+        m_vol = re.search(r'VOLUMEN[^\n\r]*\n\s*([\d,\.]+)\s*TNM', texto, re.IGNORECASE)
+    if not m_vol:
+        m_vol = re.search(r'([\d,\.]+)\s*TNM', texto, re.IGNORECASE)
+    if m_vol:
+        val_str = m_vol.group(1).replace('.', '').replace(',', '.')
+        datos['toneladas'] = float(val_str)
 
     # Valor Neto: VALOR NETO ... 3.435.620
     m_neto = re.search(r'VALOR\s+NETO[^\d]+([\d\.]+)', texto, re.IGNORECASE)
@@ -141,13 +152,20 @@ def extraer_datos_guia(pdf_path):
     return datos
 
 
-def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_comprados, excel_path="Ventas Granel.xlsx"):
+def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_comprados, toneladas=None, excel_path="Ventas Granel.xlsx"):
     """
     Agrega una fila de ENAP carga a la hoja 'Detalles movimientos' de Ventas Granel.xlsx
-    utilizando el monto total pagado (con IVA incluido).
+    utilizando el monto total pagado (con IVA incluido) y las toneladas compradas.
     """
     wb = openpyxl.load_workbook(excel_path, data_only=False)
     ws = wb['Detalles movimientos']
+
+    # Asegurar encabezado en Col 24 (X)
+    ws.cell(row=4, column=24).value = "Toneladas Compradas"
+
+    # Si no se pasó toneladas explícitamente, estimar de litros (ratio ENAP ~1936.19 L/Ton)
+    if toneladas is None and litros_comprados:
+        toneladas = round(litros_comprados / 1936.1888, 3)
 
     # 1. Encontrar la última fila ocupada en la columna C (Fecha)
     ultima_fila = 4
@@ -157,16 +175,22 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_co
 
     nueva_fila = ultima_fila + 1
 
-    # 2. Verificar si la guía ya existe: si existe, actualizar su monto a valor con IVA
+    # 2. Verificar si la guía ya existe: si existe, actualizar monto y toneladas si difieren
     str_guia_busqueda = str(n_guia).lstrip('0')
     for r in range(5, nueva_fila):
         obs = str(ws.cell(row=r, column=16).value or '')
         if str_guia_busqueda in obs:
+            cambio = False
             monto_actual = ws.cell(row=r, column=17).value
             if monto_actual != int(monto_total_iva):
                 ws.cell(row=r, column=17).value = int(monto_total_iva)
+                cambio = True
+            if toneladas and ws.cell(row=r, column=24).value != toneladas:
+                ws.cell(row=r, column=24).value = toneladas
+                cambio = True
+            if cambio:
                 wb.save(excel_path)
-                print(f"🔄 Guía N° {n_guia} actualizada en fila {r}: nuevo monto con IVA = ${int(monto_total_iva):,}")
+                print(f"🔄 Guía N° {n_guia} actualizada en fila {r}: ${int(monto_total_iva):,} con IVA | {toneladas} Ton")
                 return True
             return False
 
@@ -189,6 +213,9 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_co
     ws.cell(row=nueva_fila, column=18).value = int(litros_comprados)
     # Col 23 (W): _Idx_ENAP carga (Fórmula de índice)
     ws.cell(row=nueva_fila, column=23).value = f'=IF(F{nueva_fila}="ENAP carga", COUNTIF(F$5:F{nueva_fila}, "ENAP carga"), "")'
+    # Col 24 (X): Toneladas Compradas
+    if toneladas:
+        ws.cell(row=nueva_fila, column=24).value = toneladas
 
     wb.save(excel_path)
     print(f"✅ Carga registrada con éxito en fila {nueva_fila} de {excel_path}:")
@@ -197,6 +224,7 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_co
     print(f"   - Guía: N° {n_guia}")
     print(f"   - Monto Total (con IVA): ${int(monto_total_iva):,}")
     print(f"   - Litros Comprados: {int(litros_comprados):,} L")
+    print(f"   - Toneladas: {toneladas} Ton")
     return True
 
 

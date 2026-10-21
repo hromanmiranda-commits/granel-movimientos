@@ -200,6 +200,7 @@ def sincronizar_correos():
             camion = guia['camion'] or "VJYL61"
             monto_total = factura['valor_total'] or (factura['valor_neto'] * 1.19 if factura['valor_neto'] else 0)
             litros = guia['litros'] or 0
+            toneladas = factura.get('toneladas')
 
             if litros > 0 and monto_total > 0:
                 registrado = registrar_carga_enap_excel(
@@ -207,7 +208,8 @@ def sincronizar_correos():
                     camion=camion,
                     n_guia=n_guia,
                     monto_total_iva=monto_total,
-                    litros_comprados=litros
+                    litros_comprados=litros,
+                    toneladas=toneladas
                 )
                 if registrado:
                     nuevas_cargas += 1
