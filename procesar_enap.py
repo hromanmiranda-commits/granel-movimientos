@@ -29,7 +29,7 @@ def clasificar_documento(pdf_path):
 
 def extraer_datos_factura(pdf_path):
     """
-    Extrae N° Factura, Fecha, N° Guía, Valor Neto y Total desde una Factura ENAP PDF.
+    Extrae N° Factura, Fecha, N° Guía, Valor Neto y Total (con IVA) desde una Factura ENAP PDF.
     """
     reader = PdfReader(pdf_path)
     texto = "\n".join([page.extract_text() or "" for page in reader.pages])
@@ -68,13 +68,16 @@ def extraer_datos_factura(pdf_path):
         num_str = m_neto.group(1).replace('.', '')
         datos['valor_neto'] = float(num_str)
 
-    # Valor Total: TOTAL ... 4.088.388
-    m_tot = re.search(r'TOTAL[^\d]+([\d\.]+)\s*SON:', texto, re.IGNORECASE)
+    # Valor Total (con IVA): TOTAL ... 4.088.388
+    m_tot = re.search(r'\n\s*TOTAL[^\d\n\r]*\n\s*-+\s*\n\s*([\d\.]+)', texto, re.IGNORECASE)
     if not m_tot:
-        m_tot = re.search(r'TOTAL[^\d]+([\d\.]+)', texto, re.IGNORECASE)
+        m_tot = re.search(r'19%\s*IVA[^\d]+[\d\.]+[^\d]+([\d\.]+)', texto, re.IGNORECASE)
     if m_tot:
         num_str = m_tot.group(1).replace('.', '')
         datos['valor_total'] = float(num_str)
+    elif datos['valor_neto']:
+        # Respaldo si no encuentra la línea: Neto * 1.19
+        datos['valor_total'] = round(datos['valor_neto'] * 1.19)
 
     return datos
 
@@ -138,9 +141,10 @@ def extraer_datos_guia(pdf_path):
     return datos
 
 
-def registrar_carga_enap_excel(fecha, camion, n_guia, monto_neto, litros_comprados, excel_path="Ventas Granel.xlsx"):
+def registrar_carga_enap_excel(fecha, camion, n_guia, monto_total_iva, litros_comprados, excel_path="Ventas Granel.xlsx"):
     """
-    Agrega una fila de ENAP carga a la hoja 'Detalles movimientos' de Ventas Granel.xlsx.
+    Agrega una fila de ENAP carga a la hoja 'Detalles movimientos' de Ventas Granel.xlsx
+    utilizando el monto total pagado (con IVA incluido).
     """
     wb = openpyxl.load_workbook(excel_path, data_only=False)
     ws = wb['Detalles movimientos']
@@ -153,12 +157,17 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_neto, litros_comprad
 
     nueva_fila = ultima_fila + 1
 
-    # 2. Verificar que no exista ya esta guía en la planilla para evitar duplicados
+    # 2. Verificar si la guía ya existe: si existe, actualizar su monto a valor con IVA
     str_guia_busqueda = str(n_guia).lstrip('0')
     for r in range(5, nueva_fila):
         obs = str(ws.cell(row=r, column=16).value or '')
         if str_guia_busqueda in obs:
-            print(f"⚠️ La Guía N° {n_guia} ya se encuentra registrada en la fila {r}. No se duplica.")
+            monto_actual = ws.cell(row=r, column=17).value
+            if monto_actual != int(monto_total_iva):
+                ws.cell(row=r, column=17).value = int(monto_total_iva)
+                wb.save(excel_path)
+                print(f"🔄 Guía N° {n_guia} actualizada en fila {r}: nuevo monto con IVA = ${int(monto_total_iva):,}")
+                return True
             return False
 
     # 3. Llenar columnas correspondientes a ENAP carga
@@ -174,8 +183,8 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_neto, litros_comprad
     ws.cell(row=nueva_fila, column=14).value = "ENAP carga"
     # Col 16 (P): Observación -> Guía N° XXXXXXX
     ws.cell(row=nueva_fila, column=16).value = f"Guía N° {n_guia}"
-    # Col 17 (Q): COMPRA ENAP (Monto Neto)
-    ws.cell(row=nueva_fila, column=17).value = int(monto_neto)
+    # Col 17 (Q): COMPRA ENAP (Monto Total con IVA)
+    ws.cell(row=nueva_fila, column=17).value = int(monto_total_iva)
     # Col 18 (R): Litros Comprados
     ws.cell(row=nueva_fila, column=18).value = int(litros_comprados)
     # Col 23 (W): _Idx_ENAP carga (Fórmula de índice)
@@ -186,7 +195,7 @@ def registrar_carga_enap_excel(fecha, camion, n_guia, monto_neto, litros_comprad
     print(f"   - Fecha: {fecha.strftime('%Y-%m-%d')}")
     print(f"   - Camión: {camion}")
     print(f"   - Guía: N° {n_guia}")
-    print(f"   - Monto Neto: ${int(monto_neto):,}")
+    print(f"   - Monto Total (con IVA): ${int(monto_total_iva):,}")
     print(f"   - Litros Comprados: {int(litros_comprados):,} L")
     return True
 

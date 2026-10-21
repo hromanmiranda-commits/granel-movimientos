@@ -198,15 +198,15 @@ def sincronizar_correos():
         if guia and factura:
             fecha = guia['fecha'] or factura['fecha']
             camion = guia['camion'] or "VJYL61"
-            monto_neto = factura['valor_neto'] or 0
+            monto_total = factura['valor_total'] or (factura['valor_neto'] * 1.19 if factura['valor_neto'] else 0)
             litros = guia['litros'] or 0
 
-            if litros > 0 and monto_neto > 0:
+            if litros > 0 and monto_total > 0:
                 registrado = registrar_carga_enap_excel(
                     fecha=fecha,
                     camion=camion,
                     n_guia=n_guia,
-                    monto_neto=monto_neto,
+                    monto_total_iva=monto_total,
                     litros_comprados=litros
                 )
                 if registrado:
