@@ -3,3 +3,6 @@ venv/
 *.zip
 __pycache__/
 .github_token
+
+config_email.json
+documentos/

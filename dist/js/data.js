@@ -1,24 +1,24 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-10-19 13:20:29)
+// Granel Movimientos Data Source (Auto-updated: 2026-10-21 00:44:36)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 572055.0,
+        comprasLitros: 605183.0,
         ventasLitros: 14636.5,
-        stockSaldoLitros: 507197.5,
+        stockSaldoLitros: 540325.5,
         extraccionesLitros: 50221.0,
-        montoCompras: 196564701.0,
+        montoCompras: 206841531.0,
         montoVentas: 11684200.0,
-        guiasEnap: 51,
+        guiasEnap: 54,
         ventasOps: 35,
         extraccionesOps: 7,
-        comisionesPagadas: 485760.0,
-        comisionesPendientes: 754800.0,
-        totalComisiones: 1240560.0,
-        costoPromedioLitro: 343.61,
+        comisionesPagadas: 0.0,
+        comisionesPendientes: 0.0,
+        totalComisiones: 0.0,
+        costoPromedioLitro: 341.78,
         precioPromedioVentaLitro: 798.29,
-        margenPromedioLitro: 454.68,
-        porcentajeMargenBruto: 57.0,
-        camionVJYL61Ops: 54,
-        camionVJYL42Ops: 39
+        margenPromedioLitro: 456.51,
+        porcentajeMargenBruto: 57.2,
+        camionVJYL61Ops: 56,
+        camionVJYL42Ops: 40
     },
     transacciones: [
     {
@@ -59,7 +59,7 @@ window.GRANEL_DATA = {
         "litros": 179.2,
         "total": 179200.0,
         "medioPago": "Tarjeta",
-        "comision": 35840.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -73,7 +73,7 @@ window.GRANEL_DATA = {
         "litros": 518.1,
         "total": 518100.0,
         "medioPago": "Pendiente de pago",
-        "comision": 103620.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -87,7 +87,7 @@ window.GRANEL_DATA = {
         "litros": 488.2,
         "total": 488200.0,
         "medioPago": "Pagado",
-        "comision": 97640.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -101,7 +101,7 @@ window.GRANEL_DATA = {
         "litros": 500.3,
         "total": 500300.0,
         "medioPago": "Pagado",
-        "comision": 100060.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -115,7 +115,7 @@ window.GRANEL_DATA = {
         "litros": 237.9,
         "total": 237900.0,
         "medioPago": "Pagado",
-        "comision": 47580.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -129,7 +129,7 @@ window.GRANEL_DATA = {
         "litros": 205.1,
         "total": 205100.0,
         "medioPago": "Pagado",
-        "comision": 41020.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
         "detalles": ""
     },
@@ -143,9 +143,9 @@ window.GRANEL_DATA = {
         "litros": 300.0,
         "total": 300000.0,
         "medioPago": "Pendiente de pago",
-        "comision": 60000.0,
+        "comision": 0.0,
         "observacion": "Comision Pagada",
-        "detalles": "2428.8"
+        "detalles": ""
     },
     {
         "fecha": "2026-07-28",
@@ -157,7 +157,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 200000.0,
         "medioPago": "Transferencia",
-        "comision": 40000.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -185,7 +185,7 @@ window.GRANEL_DATA = {
         "litros": 747.0,
         "total": 747000.0,
         "medioPago": "Transferencia",
-        "comision": 149400.0,
+        "comision": 0.0,
         "observacion": "Factura",
         "detalles": "Ebal spa - RUT: 77.625.623-4 - Av Gabriela 3264 La Pintana - Giro Construccion"
     },
@@ -199,7 +199,7 @@ window.GRANEL_DATA = {
         "litros": 200.0,
         "total": 220000.0,
         "medioPago": "Transferencia",
-        "comision": 40000.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -213,7 +213,7 @@ window.GRANEL_DATA = {
         "litros": 350.0,
         "total": 385000.0,
         "medioPago": "Transferencia en dos",
-        "comision": 70000.0,
+        "comision": 0.0,
         "observacion": "Quedó saldo de $35 mil para mañana",
         "detalles": ""
     },
@@ -241,7 +241,7 @@ window.GRANEL_DATA = {
         "litros": 270.0,
         "total": 297000.0,
         "medioPago": "Transferencia",
-        "comision": 54000.0,
+        "comision": 0.0,
         "observacion": "Factura",
         "detalles": "Residencia Adulto Mayor Amor Eterno SpA - Rut 76.699.397-4 - Los Almendros Parcela2B Pirque"
     },
@@ -297,7 +297,7 @@ window.GRANEL_DATA = {
         "litros": 404.0,
         "total": 444400.0,
         "medioPago": "Transferencia",
-        "comision": 80800.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -311,7 +311,7 @@ window.GRANEL_DATA = {
         "litros": 509.0,
         "total": 559900.0,
         "medioPago": "Transferencia",
-        "comision": 101800.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -465,7 +465,7 @@ window.GRANEL_DATA = {
         "litros": 294.0,
         "total": 294000.0,
         "medioPago": "Transferencia dos",
-        "comision": 58800.0,
+        "comision": 0.0,
         "observacion": "Factura",
         "detalles": "Centro de eventos Barrio Alto SpA - RUT 78.467.844-K - EL PENON CHICO 0335 PUENTE ALTO"
     },
@@ -479,7 +479,7 @@ window.GRANEL_DATA = {
         "litros": 500.0,
         "total": 550000.0,
         "medioPago": "Pendiente de pago",
-        "comision": 100000.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -577,7 +577,7 @@ window.GRANEL_DATA = {
         "litros": 300.0,
         "total": 300000.0,
         "medioPago": "Transferencia",
-        "comision": 60000.0,
+        "comision": 0.0,
         "observacion": "",
         "detalles": ""
     },
@@ -1321,6 +1321,48 @@ window.GRANEL_DATA = {
         "medioPago": "ENAP carga",
         "comision": 0.0,
         "observacion": "Guía N° 2377115",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-19",
+        "cliente": "ENAP carga",
+        "camion": "VJYL61",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11036.0,
+        "total": 3423608.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2377567",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-20",
+        "cliente": "ENAP carga",
+        "camion": "VJYL61",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11075.0,
+        "total": 3435620.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2377964",
+        "detalles": ""
+    },
+    {
+        "fecha": "2026-10-20",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11017.0,
+        "total": 3417602.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2377979",
         "detalles": ""
     }
 ]
