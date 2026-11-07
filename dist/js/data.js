@@ -1,25 +1,25 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-11-06 17:31:11)
+// Granel Movimientos Data Source (Auto-updated: 2026-11-07 18:38:35)
 window.GRANEL_DATA = {
     kpis: {
-        comprasLitros: 715408.0,
+        comprasLitros: 737577.0,
         ventasLitros: 14636.5,
-        stockSaldoLitros: 650550.5,
+        stockSaldoLitros: 672719.5,
         extraccionesLitros: 50221.0,
-        montoCompras: 250914078.0,
+        montoCompras: 260484056.0,
         montoVentas: 11684200.0,
-        guiasEnap: 64,
+        guiasEnap: 66,
         ventasOps: 35,
         extraccionesOps: 7,
         comisionesPagadas: 0.0,
         comisionesPendientes: 0.0,
         totalComisiones: 0.0,
-        costoPromedioLitro: 350.73,
+        costoPromedioLitro: 353.16,
         precioPromedioVentaLitro: 798.29,
-        margenPromedioLitro: 447.56,
-        porcentajeMargenBruto: 56.1,
-        totalToneladasEnap: 369.5,
-        camionVJYL61Ops: 61,
-        camionVJYL42Ops: 45
+        margenPromedioLitro: 445.13,
+        porcentajeMargenBruto: 55.8,
+        totalToneladasEnap: 380.95,
+        camionVJYL61Ops: 62,
+        camionVJYL42Ops: 46
     },
     transacciones: [
     {
@@ -1611,6 +1611,36 @@ window.GRANEL_DATA = {
         "observacion": "Guía N° 2383702",
         "detalles": "",
         "toneladas": 5.7
+    },
+    {
+        "fecha": "2026-11-07",
+        "cliente": "ENAP carga",
+        "camion": "VJYL42",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11075.0,
+        "total": 4780810.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2384080",
+        "detalles": "",
+        "toneladas": 5.72
+    },
+    {
+        "fecha": "2026-11-07",
+        "cliente": "ENAP carga",
+        "camion": "VJYL61",
+        "vendedor": "ENAP carga",
+        "direccion": "N/A",
+        "precio": 0.0,
+        "litros": 11094.0,
+        "total": 4789168.0,
+        "medioPago": "ENAP carga",
+        "comision": 0.0,
+        "observacion": "Guía N° 2384105",
+        "detalles": "",
+        "toneladas": 5.73
     }
 ]
 };
