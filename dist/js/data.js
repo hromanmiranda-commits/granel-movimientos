@@ -1,4 +1,4 @@
-// Granel Movimientos Data Source (Auto-updated: 2026-11-23 15:49:45)
+// Granel Movimientos Data Source (Auto-updated: 2026-11-26 09:53:38)
 window.GRANEL_DATA = {
     kpis: {
         comprasLitros: 870204.0,
